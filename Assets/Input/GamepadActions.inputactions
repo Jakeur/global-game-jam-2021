@@ -1,0 +1,232 @@
+{
+    "name": "GamepadActions",
+    "maps": [
+        {
+            "name": "Menu",
+            "id": "e9926f42-bbd7-4c5b-9384-2ff3ebf06cc0",
+            "actions": [
+                {
+                    "name": "New action",
+                    "type": "Button",
+                    "id": "ec0dfc20-2092-462a-badc-c4a903ea1eaa",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "401669e9-4987-4474-953a-c7aa21c5295f",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "New action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Dialogue",
+            "id": "767ff35e-7513-4ca5-ad19-e0f2f387a917",
+            "actions": [
+                {
+                    "name": "OpenMenu",
+                    "type": "Button",
+                    "id": "901e5110-296d-4bd2-b9a9-a0e3272221b6",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press"
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "626d760f-99a8-417f-8127-60e1447e5dc4",
+                    "path": "<Gamepad>/dpad/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Xbox control scheme;PS4 control scheme",
+                    "action": "OpenMenu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Player",
+            "id": "f37a309e-1f02-48fc-a513-f6532a24c325",
+            "actions": [
+                {
+                    "name": "LeftLeg",
+                    "type": "Button",
+                    "id": "ebb1145c-3521-45aa-b7bd-86af90387d6a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press"
+                },
+                {
+                    "name": "RightLeg",
+                    "type": "Button",
+                    "id": "4aee12f1-6772-47d1-9b70-f6a1592ac9cc",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press"
+                },
+                {
+                    "name": "RightArm",
+                    "type": "Button",
+                    "id": "0b7d472b-1bb9-435d-915b-d094b7816ffc",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press"
+                },
+                {
+                    "name": "LeftArm",
+                    "type": "Button",
+                    "id": "2d10524f-06ad-4cec-bddc-019238403e59",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press"
+                },
+                {
+                    "name": "Competence",
+                    "type": "Button",
+                    "id": "6ae2adb2-2659-4a25-8d4b-62777ac493c4",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press"
+                },
+                {
+                    "name": "Jump",
+                    "type": "Button",
+                    "id": "b187c776-605b-4eb1-baf9-302ddef156d5",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press"
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "aba864e9-d8a3-4993-a910-92d534a45d97",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PS4 control scheme;Xbox control scheme",
+                    "action": "LeftLeg",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2c8aefc1-da8a-4643-8269-8191c937ce31",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PS4 control scheme;Xbox control scheme",
+                    "action": "RightLeg",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4a473fdb-17d6-4ba5-a88a-95665b6473e8",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PS4 control scheme;Xbox control scheme",
+                    "action": "RightArm",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e9d5f91f-8641-4094-a300-8c8ec61254f3",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PS4 control scheme;Xbox control scheme",
+                    "action": "LeftArm",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "28c3d684-0fc2-46b0-8996-d5e9334f049f",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Competence",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e473e777-1d30-4962-9ace-f6746671c056",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Inventory",
+            "id": "d839e154-433d-44f4-bf10-21c3266bbe79",
+            "actions": [
+                {
+                    "name": "Equip",
+                    "type": "Button",
+                    "id": "4051cc87-04fa-4b62-9635-966bbf3514e4",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press"
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "38231de9-0e96-4cf4-8663-eb435643e11c",
+                    "path": "<Gamepad>/dpad/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Xbox control scheme;PS4 control scheme",
+                    "action": "Equip",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": [
+        {
+            "name": "Xbox control scheme",
+            "bindingGroup": "Xbox control scheme",
+            "devices": [
+                {
+                    "devicePath": "<XboxOneGampadiOS>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        },
+        {
+            "name": "PS4 control scheme",
+            "bindingGroup": "PS4 control scheme",
+            "devices": [
+                {
+                    "devicePath": "<DualShock4GampadiOS>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        }
+    ]
+}
