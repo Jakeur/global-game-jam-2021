@@ -4,7 +4,11 @@
 TagManager:
   serializedVersion: 2
   tags:
+<<<<<<< HEAD
   - Interactable
+=======
+  - CameraTrigger
+>>>>>>> prototyping
   layers:
   - Default
   - TransparentFX
