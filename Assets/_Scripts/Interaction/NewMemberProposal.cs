@@ -10,13 +10,13 @@ public class NewMemberProposal : MonoBehaviour, IInteractable
     {
         DialogueManager.Instance.RefreshDialogueContent(dialogueContent);
         DialogueManager.Instance.ShowDialogue();
-        Debug.Log("Crossed next step");
+        CharacterInteraction.Instance.ChangeGameStep(GameLoopStep.DIALOGUE);
     }
 
     public void ExitInteraction()
     {
-        Debug.Log("Crossed next step");
         DialogueManager.Instance.HideDialogue();
+        CharacterInteraction.Instance.ChangeGameStep(GameLoopStep.EXPLORE);
     }
 
     // Start is called before the first frame update

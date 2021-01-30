@@ -15,6 +15,7 @@ public class InputReader : ScriptableObject, GamepadActions.IDialogueActions, Ga
 	public event UnityAction competenceEvent; // Extra action
 	public event UnityAction<Vector2> moveEvent;
 	public event UnityAction<Vector2> aimEvent;
+	public event UnityAction<Vector2> chooseStageEvent;
 
 	// Dialogue
 	public event UnityAction advanceDialogueEvent = delegate { };
@@ -22,8 +23,19 @@ public class InputReader : ScriptableObject, GamepadActions.IDialogueActions, Ga
 
 	private GamepadActions gameInput;
 
+	// Public accessor
+	public GameController controller;
+
 	private void OnEnable()
 	{
+		// Init controller
+		if (Input.GetJoystickNames().Length > 0 &&
+			Input.GetJoystickNames()[0].Contains("Sony"))
+			controller = GameController.PLAYSTATION;
+		else
+			controller = GameController.XBOX;
+
+		// Init callbacks
 		if (gameInput == null)
 		{
 			gameInput = new GamepadActions();
@@ -43,8 +55,26 @@ public class InputReader : ScriptableObject, GamepadActions.IDialogueActions, Ga
 
 	public void EnableDialogueInput()
 	{
-		//gameInput.Dialogues.Enable();
-		//gameInput.Gameplay.Disable();
+		gameInput.Player.Disable();
+		gameInput.Dialogue.Enable();
+		gameInput.Menu.Disable();
+		gameInput.Inventory.Disable();
+	}
+
+	public void EnableMenuInput()
+	{
+		gameInput.Player.Disable();
+		gameInput.Dialogue.Disable();
+		gameInput.Menu.Enable();
+		gameInput.Inventory.Disable();
+	}
+
+	public void EnableInventoryInput()
+	{
+		gameInput.Player.Disable();
+		gameInput.Dialogue.Disable();
+		gameInput.Menu.Disable();
+		gameInput.Inventory.Enable();
 	}
 
 	public void EnablePlayerInput()
@@ -57,11 +87,13 @@ public class InputReader : ScriptableObject, GamepadActions.IDialogueActions, Ga
 
 	public void DisableAllInput()
 	{
-		//gameInput.Gameplay.Disable();
-		//gameInput.Dialogues.Disable();
+		gameInput.Player.Disable();
+		gameInput.Dialogue.Disable();
+		gameInput.Menu.Disable();
+		gameInput.Inventory.Disable();
 	}
 
-    public void OnOpenDialogue(InputAction.CallbackContext context)
+	public void OnOpenDialogue(InputAction.CallbackContext context)
     {
         throw new System.NotImplementedException();
     }
@@ -106,15 +138,23 @@ public class InputReader : ScriptableObject, GamepadActions.IDialogueActions, Ga
         throw new System.NotImplementedException();
     }
 
-    public void OnMove(InputAction.CallbackContext context)
-    {
-        if (moveEvent != null)
+	public void OnChooseStage(InputAction.CallbackContext context)
+	{
+		if (chooseStageEvent != null)
+		{
+			chooseStageEvent.Invoke(context.ReadValue<Vector2>());
+		}
+	}
+
+	public void OnMove(InputAction.CallbackContext context)
+	{
+		if (moveEvent != null)
 		{
 			moveEvent.Invoke(context.ReadValue<Vector2>());
 		}
 	}
 
-    public void OnAim(InputAction.CallbackContext context)
+	public void OnAim(InputAction.CallbackContext context)
 	{
 		if (aimEvent != null)
 		{

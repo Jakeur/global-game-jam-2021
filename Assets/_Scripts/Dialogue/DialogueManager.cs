@@ -8,6 +8,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] GameObject canvas;
     [SerializeField] Text title;
     [SerializeField] Text description;
+    [SerializeField] Image buttonImage;
     [SerializeField] DialogueSO defaultDialogueSO;
 
     public static DialogueManager Instance { get; private set; }
@@ -44,5 +45,7 @@ public class DialogueManager : MonoBehaviour
     {
         title.text = newContent.Title;
         description.text = newContent.Description;
+        if (CharacterInteraction.Instance != null)
+            buttonImage.sprite = newContent.ButtonSprite[CharacterInteraction.Instance.GetControllerId()];
     }
 }

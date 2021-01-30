@@ -32,7 +32,7 @@ RectTransform:
   m_Father: {fileID: 6485718894899569427}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.02, y: 0.02}
+  m_AnchorMin: {x: 0.9, y: 0.02}
   m_AnchorMax: {x: 0.98, y: 0.28}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
@@ -65,9 +65,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 0cff4d8f6706e4a43a3b0c2400396c4e, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -354,7 +354,8 @@ MonoBehaviour:
   canvas: {fileID: 6485718894899569426}
   title: {fileID: 6485718894735474906}
   description: {fileID: 6485718894526847631}
-  defaultDialogueSO: {fileID: 11400000, guid: 2cf0a4b2b4627421d90d8942a77bf504, type: 2}
+  buttonImage: {fileID: 6485718893397727891}
+  defaultDialogueSO: {fileID: 11400000, guid: 9441210791f41496cb679930f3b95c61, type: 2}
 --- !u!1 &6485718894899569426
 GameObject:
   m_ObjectHideFlags: 0
