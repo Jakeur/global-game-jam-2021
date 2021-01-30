@@ -549,7 +549,7 @@ MonoBehaviour:
   actualTime: 1
   gameIsPaused: 0
   timePassed: 0
-  myVolume: 0
+  myVolume: 1
   mute: 0
   resolutionX: 0
   resolutionY: 0

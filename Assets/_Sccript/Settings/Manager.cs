@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.IO;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Networking;
 
 /// <summary>
 /// This script control parametters of all scripts.
@@ -30,7 +26,7 @@ public class Manager : MonoBehaviour
     [Range(0, 5)]
     public int qualityIndex;
 
-    public string currentWorld;
+    public string currentTable;
     public HashSet<string> players;
 
     public bool replay;
