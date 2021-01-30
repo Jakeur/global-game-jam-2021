@@ -52,8 +52,7 @@ public class DirectionSelectionMenu : MonoBehaviour
         Close();
 
     }
-
-
+    
     public void Open(Waypoint waypoint)
     {
         _waypoint = waypoint;
