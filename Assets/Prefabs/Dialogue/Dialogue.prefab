@@ -351,6 +351,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9202734e5d73b4990afbb65e35132e28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvas: {fileID: 6485718894899569426}
+  title: {fileID: 6485718894735474906}
+  description: {fileID: 6485718894526847631}
+  defaultDialogueSO: {fileID: 11400000, guid: 2cf0a4b2b4627421d90d8942a77bf504, type: 2}
 --- !u!1 &6485718894899569426
 GameObject:
   m_ObjectHideFlags: 0
@@ -363,7 +367,7 @@ GameObject:
   - component: {fileID: 6485718894899569425}
   - component: {fileID: 6485718894899569424}
   m_Layer: 5
-  m_Name: Background
+  m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

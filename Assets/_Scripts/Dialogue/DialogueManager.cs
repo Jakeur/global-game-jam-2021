@@ -5,29 +5,44 @@ using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
+    [SerializeField] GameObject canvas;
     [SerializeField] Text title;
     [SerializeField] Text description;
-    [SerializeField] DialogueSO dialogueSO;
+    [SerializeField] DialogueSO defaultDialogueSO;
+
+    public static DialogueManager Instance { get; private set; }
+
+    private void CreateInstance()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            Instance = this;
+        }
+    }
+
+    void Awake()
+    {
+        CreateInstance();
+        RefreshDialogueContent(defaultDialogueSO);
+    }
 
     public void ShowDialogue()
     {
-
+        canvas.SetActive(true);
     }
 
-    void RefreshDialogueContent()
+    public void HideDialogue()
     {
-        
+        canvas.SetActive(false);
     }
 
-    // Start is called before the first frame update
-    void Start()
+    public void RefreshDialogueContent(DialogueSO newContent)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        title.text = newContent.Title;
+        description.text = newContent.Description;
     }
 }

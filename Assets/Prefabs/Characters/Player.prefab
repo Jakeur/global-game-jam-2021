@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 8769820878262625504}
   - component: {fileID: 8769820878262625505}
   - component: {fileID: 8769820878262625533}
-  - component: {fileID: 8769820878262625532}
   - component: {fileID: 3703225554308482498}
   m_Layer: 0
   m_Name: Player
@@ -108,27 +107,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 8769820878262625506}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8e709d5b162245b4a8637c884ecb660, type: 3}
+  m_Script: {fileID: 11500000, guid: 9f8ddb80069a84c418f8ef91a83b53fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactInput: {fileID: 8769820878262625532}
   InteractableTag: Interactable
---- !u!114 &8769820878262625532
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8769820878262625506}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1cee52843ddda459d825417c60fa4379, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  LayerInteractable:
-    serializedVersion: 2
-    m_Bits: 8
-  RayLength: 5
+  inputReader: {fileID: 11400000, guid: ab858efded3c3445bb6f2903e49f36eb, type: 2}
 --- !u!54 &3703225554308482498
 Rigidbody:
   m_ObjectHideFlags: 0
