@@ -73,22 +73,6 @@ public class @GamepadActions : IInputActionCollection, IDisposable
             ""id"": ""f37a309e-1f02-48fc-a513-f6532a24c325"",
             ""actions"": [
                 {
-                    ""name"": ""LeftLeg"",
-                    ""type"": ""Button"",
-                    ""id"": ""ebb1145c-3521-45aa-b7bd-86af90387d6a"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": ""Press""
-                },
-                {
-                    ""name"": ""RightLeg"",
-                    ""type"": ""Button"",
-                    ""id"": ""4aee12f1-6772-47d1-9b70-f6a1592ac9cc"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": ""Press""
-                },
-                {
                     ""name"": ""RightArm"",
                     ""type"": ""Button"",
                     ""id"": ""0b7d472b-1bb9-435d-915b-d094b7816ffc"",
@@ -119,35 +103,37 @@ public class @GamepadActions : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""f40350df-d0ec-4ed2-b46e-70af9bbcbd60"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""Move"",
+                    ""type"": ""Value"",
+                    ""id"": ""ddd9af10-d3ac-4aab-8927-acaada6d6d3c"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": ""StickDeadzone"",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Aim"",
+                    ""type"": ""Value"",
+                    ""id"": ""d8345618-95d1-45f2-9777-0b1b732e4a8f"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": ""StickDeadzone"",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
                 {
                     ""name"": """",
-                    ""id"": ""aba864e9-d8a3-4993-a910-92d534a45d97"",
-                    ""path"": ""<Gamepad>/leftTrigger"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""PS4 control scheme;Xbox control scheme"",
-                    ""action"": ""LeftLeg"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""2c8aefc1-da8a-4643-8269-8191c937ce31"",
-                    ""path"": ""<Gamepad>/rightTrigger"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""PS4 control scheme;Xbox control scheme"",
-                    ""action"": ""RightLeg"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""4a473fdb-17d6-4ba5-a88a-95665b6473e8"",
-                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""PS4 control scheme;Xbox control scheme"",
@@ -157,8 +143,19 @@ public class @GamepadActions : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""e2c69e26-b65c-4ef4-aa63-98d7add4f96e"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RightArm"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""e9d5f91f-8641-4094-a300-8c8ec61254f3"",
-                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""PS4 control scheme;Xbox control scheme"",
@@ -168,8 +165,30 @@ public class @GamepadActions : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""8bd0dcc4-ff2c-4049-8503-6f9190a480ef"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LeftArm"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""28c3d684-0fc2-46b0-8996-d5e9334f049f"",
-                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Competence"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fdab138f-4f2c-460b-8864-783a6afbd5f5"",
+                    ""path"": ""<Keyboard>/a"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -185,6 +204,127 @@ public class @GamepadActions : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b5ec25b9-bb89-42af-a555-ecf8e9d5e805"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5dae82e3-3aa8-4913-a612-848b6278520d"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4c4dae87-c1b4-4418-b336-0c58b4649ce8"",
+                    ""path"": ""<Keyboard>/leftShift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""948c44b9-8a2c-4e43-b17c-9fee674115db"",
+                    ""path"": ""<Gamepad>/leftStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""5a624c8e-a2b0-40e3-8255-b94911136b88"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""7fbabfd2-d745-4600-b908-b22776a5fc23"",
+                    ""path"": ""<Keyboard>/z"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""eb674f44-d262-476c-b90f-739e844de339"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""45934096-3916-4453-956e-e16078f22008"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""0f982100-1735-40dd-ae03-fc935163ebce"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7ef02720-74c1-4c44-b5cf-ec87ded82ea4"",
+                    ""path"": ""<Gamepad>/rightStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Aim"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4365715c-bbf8-44cd-a24b-a19eb94e6f9d"",
+                    ""path"": ""<Mouse>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Aim"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -251,12 +391,13 @@ public class @GamepadActions : IInputActionCollection, IDisposable
         m_Dialogue_OpenMenu = m_Dialogue.FindAction("OpenMenu", throwIfNotFound: true);
         // Player
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
-        m_Player_LeftLeg = m_Player.FindAction("LeftLeg", throwIfNotFound: true);
-        m_Player_RightLeg = m_Player.FindAction("RightLeg", throwIfNotFound: true);
         m_Player_RightArm = m_Player.FindAction("RightArm", throwIfNotFound: true);
         m_Player_LeftArm = m_Player.FindAction("LeftArm", throwIfNotFound: true);
         m_Player_Competence = m_Player.FindAction("Competence", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
+        m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
+        m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
+        m_Player_Aim = m_Player.FindAction("Aim", throwIfNotFound: true);
         // Inventory
         m_Inventory = asset.FindActionMap("Inventory", throwIfNotFound: true);
         m_Inventory_Equip = m_Inventory.FindAction("Equip", throwIfNotFound: true);
@@ -375,22 +516,24 @@ public class @GamepadActions : IInputActionCollection, IDisposable
     // Player
     private readonly InputActionMap m_Player;
     private IPlayerActions m_PlayerActionsCallbackInterface;
-    private readonly InputAction m_Player_LeftLeg;
-    private readonly InputAction m_Player_RightLeg;
     private readonly InputAction m_Player_RightArm;
     private readonly InputAction m_Player_LeftArm;
     private readonly InputAction m_Player_Competence;
     private readonly InputAction m_Player_Jump;
+    private readonly InputAction m_Player_Interact;
+    private readonly InputAction m_Player_Move;
+    private readonly InputAction m_Player_Aim;
     public struct PlayerActions
     {
         private @GamepadActions m_Wrapper;
         public PlayerActions(@GamepadActions wrapper) { m_Wrapper = wrapper; }
-        public InputAction @LeftLeg => m_Wrapper.m_Player_LeftLeg;
-        public InputAction @RightLeg => m_Wrapper.m_Player_RightLeg;
         public InputAction @RightArm => m_Wrapper.m_Player_RightArm;
         public InputAction @LeftArm => m_Wrapper.m_Player_LeftArm;
         public InputAction @Competence => m_Wrapper.m_Player_Competence;
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
+        public InputAction @Interact => m_Wrapper.m_Player_Interact;
+        public InputAction @Move => m_Wrapper.m_Player_Move;
+        public InputAction @Aim => m_Wrapper.m_Player_Aim;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -400,12 +543,6 @@ public class @GamepadActions : IInputActionCollection, IDisposable
         {
             if (m_Wrapper.m_PlayerActionsCallbackInterface != null)
             {
-                @LeftLeg.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLeftLeg;
-                @LeftLeg.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLeftLeg;
-                @LeftLeg.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLeftLeg;
-                @RightLeg.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRightLeg;
-                @RightLeg.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRightLeg;
-                @RightLeg.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRightLeg;
                 @RightArm.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRightArm;
                 @RightArm.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRightArm;
                 @RightArm.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRightArm;
@@ -418,16 +555,19 @@ public class @GamepadActions : IInputActionCollection, IDisposable
                 @Jump.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
                 @Jump.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
                 @Jump.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
+                @Interact.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
+                @Interact.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
+                @Interact.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
+                @Move.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
+                @Move.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
+                @Move.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
+                @Aim.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAim;
+                @Aim.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAim;
+                @Aim.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAim;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @LeftLeg.started += instance.OnLeftLeg;
-                @LeftLeg.performed += instance.OnLeftLeg;
-                @LeftLeg.canceled += instance.OnLeftLeg;
-                @RightLeg.started += instance.OnRightLeg;
-                @RightLeg.performed += instance.OnRightLeg;
-                @RightLeg.canceled += instance.OnRightLeg;
                 @RightArm.started += instance.OnRightArm;
                 @RightArm.performed += instance.OnRightArm;
                 @RightArm.canceled += instance.OnRightArm;
@@ -440,6 +580,15 @@ public class @GamepadActions : IInputActionCollection, IDisposable
                 @Jump.started += instance.OnJump;
                 @Jump.performed += instance.OnJump;
                 @Jump.canceled += instance.OnJump;
+                @Interact.started += instance.OnInteract;
+                @Interact.performed += instance.OnInteract;
+                @Interact.canceled += instance.OnInteract;
+                @Move.started += instance.OnMove;
+                @Move.performed += instance.OnMove;
+                @Move.canceled += instance.OnMove;
+                @Aim.started += instance.OnAim;
+                @Aim.performed += instance.OnAim;
+                @Aim.canceled += instance.OnAim;
             }
         }
     }
@@ -505,12 +654,13 @@ public class @GamepadActions : IInputActionCollection, IDisposable
     }
     public interface IPlayerActions
     {
-        void OnLeftLeg(InputAction.CallbackContext context);
-        void OnRightLeg(InputAction.CallbackContext context);
         void OnRightArm(InputAction.CallbackContext context);
         void OnLeftArm(InputAction.CallbackContext context);
         void OnCompetence(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
+        void OnMove(InputAction.CallbackContext context);
+        void OnAim(InputAction.CallbackContext context);
     }
     public interface IInventoryActions
     {

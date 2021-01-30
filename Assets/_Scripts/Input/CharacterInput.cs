@@ -23,9 +23,8 @@ public class CharacterInput : MonoBehaviour, IInteractInput
         _inputActions.Player.Jump.performed += OnInteractButton;
         _inputActions.Player.LeftArm.performed += OnInteractButton;
         _inputActions.Player.RightArm.performed += OnInteractButton;
-        _inputActions.Player.LeftLeg.performed += OnInteractButton;
-        _inputActions.Player.RightLeg.performed += OnInteractButton;
         _inputActions.Player.Competence.performed += OnInteractButton;
+        _inputActions.Player.Interact.performed += OnInteractButton;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -60,9 +59,9 @@ public class CharacterInput : MonoBehaviour, IInteractInput
         _inputActions.Player.Jump.performed -= OnInteractButton;
         _inputActions.Player.LeftArm.performed -= OnInteractButton;
         _inputActions.Player.RightArm.performed -= OnInteractButton;
-        _inputActions.Player.LeftLeg.performed -= OnInteractButton;
-        _inputActions.Player.RightLeg.performed -= OnInteractButton;
         _inputActions.Player.Competence.performed -= OnInteractButton;
+        _inputActions.Player.Interact.performed += OnInteractButton;
+
     }
 
 }
