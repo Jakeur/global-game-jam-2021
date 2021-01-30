@@ -324,20 +324,64 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "",
-                    "id": "7a25059f-e9e4-48b0-967a-b59791572123",
-                    "path": "<Gamepad>/dpad",
+                    "name": "2D Vector",
+                    "id": "d011384c-ea09-4831-ab4c-eb8770297dc4",
+                    "path": "2DVector(mode=1)",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ChooseStage",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "19d3d89a-af8d-4a9b-aac9-e8f6ee21120c",
+                    "path": "<Gamepad>/dpad/up",
                     "interactions": "",
                     "processors": "",
                     "groups": "Xbox control scheme;PS4 control scheme",
                     "action": "ChooseStage",
                     "isComposite": false,
-                    "isPartOfComposite": false
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "53180c19-af7f-4180-992a-89026ffe61d8",
+                    "path": "<Gamepad>/dpad/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ChooseStage",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "56e21749-b892-4f55-b378-82c0a0699be8",
+                    "path": "<Gamepad>/dpad/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ChooseStage",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "535b3a79-a443-452c-be29-f29d55d3db27",
+                    "path": "<Gamepad>/dpad/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ChooseStage",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 },
                 {
                     "name": "2D Vector",
                     "id": "96ee0179-c5b0-4ce4-ac6e-4a04d69f4939",
-                    "path": "2DVector",
+                    "path": "2DVector(mode=1)",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

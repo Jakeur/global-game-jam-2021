@@ -147,7 +147,7 @@ public class InputReader : ScriptableObject, GamepadActions.IDialogueActions, Ga
 
 	public void OnChooseStage(InputAction.CallbackContext context)
 	{
-		if (chooseStageEvent != null)
+		if (chooseStageEvent != null && context.phase == InputActionPhase.Performed)
 		{
 			chooseStageEvent.Invoke(context.ReadValue<Vector2>());
 		}

@@ -64,6 +64,7 @@ public class CharacterInteraction : MonoBehaviour
         inputReader.openDialogueEvent += OnOpenDialog;
         inputReader.equipEvent += OnEquip;
         inputReader.declineEvent += OnDecline;
+        inputReader.chooseStageEvent += OnChooseStage;
     }
 
     private void OnDisable()
@@ -73,7 +74,10 @@ public class CharacterInteraction : MonoBehaviour
         inputReader.openDialogueEvent -= OnOpenDialog;
         inputReader.equipEvent -= OnEquip;
         inputReader.declineEvent -= OnDecline;
+        inputReader.chooseStageEvent -= OnChooseStage;
     }
+
+    #region Trigger events
 
     private void OnTriggerEnter(Collider other)
     {
@@ -92,6 +96,10 @@ public class CharacterInteraction : MonoBehaviour
             characterInteractingWith = null;
         }
     }
+
+    #endregion
+
+    #region Handle function
 
     private void OnRightArm()
     {
@@ -115,4 +123,18 @@ public class CharacterInteraction : MonoBehaviour
         if (characterInteractingWith != null)
             characterInteractingWith.GetComponent<ITrader>().Decline();
     }
+
+    private void OnChooseStage(Vector2 vector)
+    {
+        if (vector.x > 0 && vector.y == 0)
+            Debug.Log("Choose right path");
+        else if (vector.x < 0 && vector.y == 0)
+            Debug.Log("Choose left path");
+        else if (vector.y > 0 && vector.x == 0)
+            Debug.Log("Choose up path");
+        else if (vector.y < 0 && vector.x == 0)
+            Debug.Log("Choose down path");
+    }
+
+    #endregion
 }
