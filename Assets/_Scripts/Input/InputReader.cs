@@ -10,6 +10,7 @@ public class InputReader : ScriptableObject, GamepadActions.IDialogueActions, Ga
 	public event UnityAction leftArmEvent;
 	public event UnityAction openDialogueEvent;
 	public event UnityAction equipEvent;
+	public event UnityAction declineEvent;
 	public event UnityAction rightArmEvent;
 	public event UnityAction interactEvent; // Used to talk, pickup objects, interact with tools
 	public event UnityAction competenceEvent; // Extra action
@@ -94,14 +95,20 @@ public class InputReader : ScriptableObject, GamepadActions.IDialogueActions, Ga
 	}
 
 	public void OnOpenDialogue(InputAction.CallbackContext context)
-    {
-        throw new System.NotImplementedException();
-    }
+	{
+		if (openDialogueEvent != null && context.phase == InputActionPhase.Performed)
+		{
+			openDialogueEvent.Invoke();
+		}
+	}
 
     public void OnEquip(InputAction.CallbackContext context)
-    {
-        throw new System.NotImplementedException();
-    }
+	{
+		if (equipEvent != null && context.phase == InputActionPhase.Performed)
+		{
+			equipEvent.Invoke();
+		}
+	}
 
     public void OnNewaction(InputAction.CallbackContext context)
     {
@@ -120,7 +127,7 @@ public class InputReader : ScriptableObject, GamepadActions.IDialogueActions, Ga
 
     public void OnLeftArm(InputAction.CallbackContext context)
     {
-        throw new System.NotImplementedException();
+
     }
 
     public void OnCompetence(InputAction.CallbackContext context)
@@ -159,6 +166,14 @@ public class InputReader : ScriptableObject, GamepadActions.IDialogueActions, Ga
 		if (aimEvent != null)
 		{
 			aimEvent.Invoke(context.ReadValue<Vector2>());
+		}
+	}
+
+    public void OnRefuse(InputAction.CallbackContext context)
+	{
+		if (declineEvent != null && context.phase == InputActionPhase.Performed)
+		{
+			declineEvent.Invoke();
 		}
 	}
 }

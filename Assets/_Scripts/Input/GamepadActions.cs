@@ -58,7 +58,7 @@ public class @GamepadActions : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""626d760f-99a8-417f-8127-60e1447e5dc4"",
-                    ""path"": ""<Gamepad>/dpad/down"",
+                    ""path"": ""<Gamepad>/buttonWest"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Xbox control scheme;PS4 control scheme"",
@@ -415,17 +415,36 @@ public class @GamepadActions : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""Refuse"",
+                    ""type"": ""Button"",
+                    ""id"": ""db27c974-d895-42a4-bf4f-0f92278c6c87"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
                 }
             ],
             ""bindings"": [
                 {
                     ""name"": """",
                     ""id"": ""38231de9-0e96-4cf4-8663-eb435643e11c"",
-                    ""path"": ""<Gamepad>/dpad/down"",
+                    ""path"": ""<Gamepad>/buttonWest"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Xbox control scheme;PS4 control scheme"",
                     ""action"": ""Equip"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""dd156770-55a2-4a94-a55c-a5cd0b61fe01"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Refuse"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -476,6 +495,7 @@ public class @GamepadActions : IInputActionCollection, IDisposable
         // Inventory
         m_Inventory = asset.FindActionMap("Inventory", throwIfNotFound: true);
         m_Inventory_Equip = m_Inventory.FindAction("Equip", throwIfNotFound: true);
+        m_Inventory_Refuse = m_Inventory.FindAction("Refuse", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -681,11 +701,13 @@ public class @GamepadActions : IInputActionCollection, IDisposable
     private readonly InputActionMap m_Inventory;
     private IInventoryActions m_InventoryActionsCallbackInterface;
     private readonly InputAction m_Inventory_Equip;
+    private readonly InputAction m_Inventory_Refuse;
     public struct InventoryActions
     {
         private @GamepadActions m_Wrapper;
         public InventoryActions(@GamepadActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Equip => m_Wrapper.m_Inventory_Equip;
+        public InputAction @Refuse => m_Wrapper.m_Inventory_Refuse;
         public InputActionMap Get() { return m_Wrapper.m_Inventory; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -698,6 +720,9 @@ public class @GamepadActions : IInputActionCollection, IDisposable
                 @Equip.started -= m_Wrapper.m_InventoryActionsCallbackInterface.OnEquip;
                 @Equip.performed -= m_Wrapper.m_InventoryActionsCallbackInterface.OnEquip;
                 @Equip.canceled -= m_Wrapper.m_InventoryActionsCallbackInterface.OnEquip;
+                @Refuse.started -= m_Wrapper.m_InventoryActionsCallbackInterface.OnRefuse;
+                @Refuse.performed -= m_Wrapper.m_InventoryActionsCallbackInterface.OnRefuse;
+                @Refuse.canceled -= m_Wrapper.m_InventoryActionsCallbackInterface.OnRefuse;
             }
             m_Wrapper.m_InventoryActionsCallbackInterface = instance;
             if (instance != null)
@@ -705,6 +730,9 @@ public class @GamepadActions : IInputActionCollection, IDisposable
                 @Equip.started += instance.OnEquip;
                 @Equip.performed += instance.OnEquip;
                 @Equip.canceled += instance.OnEquip;
+                @Refuse.started += instance.OnRefuse;
+                @Refuse.performed += instance.OnRefuse;
+                @Refuse.canceled += instance.OnRefuse;
             }
         }
     }
@@ -749,5 +777,6 @@ public class @GamepadActions : IInputActionCollection, IDisposable
     public interface IInventoryActions
     {
         void OnEquip(InputAction.CallbackContext context);
+        void OnRefuse(InputAction.CallbackContext context);
     }
 }

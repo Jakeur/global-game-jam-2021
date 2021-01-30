@@ -45,7 +45,7 @@
                 {
                     "name": "",
                     "id": "626d760f-99a8-417f-8127-60e1447e5dc4",
-                    "path": "<Gamepad>/dpad/down",
+                    "path": "<Gamepad>/buttonWest",
                     "interactions": "",
                     "processors": "",
                     "groups": "Xbox control scheme;PS4 control scheme",
@@ -402,17 +402,36 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "Press"
+                },
+                {
+                    "name": "Refuse",
+                    "type": "Button",
+                    "id": "db27c974-d895-42a4-bf4f-0f92278c6c87",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press"
                 }
             ],
             "bindings": [
                 {
                     "name": "",
                     "id": "38231de9-0e96-4cf4-8663-eb435643e11c",
-                    "path": "<Gamepad>/dpad/down",
+                    "path": "<Gamepad>/buttonWest",
                     "interactions": "",
                     "processors": "",
                     "groups": "Xbox control scheme;PS4 control scheme",
                     "action": "Equip",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "dd156770-55a2-4a94-a55c-a5cd0b61fe01",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Refuse",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
