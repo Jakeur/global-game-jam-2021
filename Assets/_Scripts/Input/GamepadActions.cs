@@ -46,7 +46,7 @@ public class @GamepadActions : IInputActionCollection, IDisposable
             ""id"": ""767ff35e-7513-4ca5-ad19-e0f2f387a917"",
             ""actions"": [
                 {
-                    ""name"": ""OpenMenu"",
+                    ""name"": ""OpenDialogue"",
                     ""type"": ""Button"",
                     ""id"": ""901e5110-296d-4bd2-b9a9-a0e3272221b6"",
                     ""expectedControlType"": ""Button"",
@@ -62,7 +62,7 @@ public class @GamepadActions : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Xbox control scheme;PS4 control scheme"",
-                    ""action"": ""OpenMenu"",
+                    ""action"": ""OpenDialogue"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -388,7 +388,7 @@ public class @GamepadActions : IInputActionCollection, IDisposable
         m_Menu_Newaction = m_Menu.FindAction("New action", throwIfNotFound: true);
         // Dialogue
         m_Dialogue = asset.FindActionMap("Dialogue", throwIfNotFound: true);
-        m_Dialogue_OpenMenu = m_Dialogue.FindAction("OpenMenu", throwIfNotFound: true);
+        m_Dialogue_OpenDialogue = m_Dialogue.FindAction("OpenDialogue", throwIfNotFound: true);
         // Player
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_RightArm = m_Player.FindAction("RightArm", throwIfNotFound: true);
@@ -483,12 +483,12 @@ public class @GamepadActions : IInputActionCollection, IDisposable
     // Dialogue
     private readonly InputActionMap m_Dialogue;
     private IDialogueActions m_DialogueActionsCallbackInterface;
-    private readonly InputAction m_Dialogue_OpenMenu;
+    private readonly InputAction m_Dialogue_OpenDialogue;
     public struct DialogueActions
     {
         private @GamepadActions m_Wrapper;
         public DialogueActions(@GamepadActions wrapper) { m_Wrapper = wrapper; }
-        public InputAction @OpenMenu => m_Wrapper.m_Dialogue_OpenMenu;
+        public InputAction @OpenDialogue => m_Wrapper.m_Dialogue_OpenDialogue;
         public InputActionMap Get() { return m_Wrapper.m_Dialogue; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -498,16 +498,16 @@ public class @GamepadActions : IInputActionCollection, IDisposable
         {
             if (m_Wrapper.m_DialogueActionsCallbackInterface != null)
             {
-                @OpenMenu.started -= m_Wrapper.m_DialogueActionsCallbackInterface.OnOpenMenu;
-                @OpenMenu.performed -= m_Wrapper.m_DialogueActionsCallbackInterface.OnOpenMenu;
-                @OpenMenu.canceled -= m_Wrapper.m_DialogueActionsCallbackInterface.OnOpenMenu;
+                @OpenDialogue.started -= m_Wrapper.m_DialogueActionsCallbackInterface.OnOpenDialogue;
+                @OpenDialogue.performed -= m_Wrapper.m_DialogueActionsCallbackInterface.OnOpenDialogue;
+                @OpenDialogue.canceled -= m_Wrapper.m_DialogueActionsCallbackInterface.OnOpenDialogue;
             }
             m_Wrapper.m_DialogueActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @OpenMenu.started += instance.OnOpenMenu;
-                @OpenMenu.performed += instance.OnOpenMenu;
-                @OpenMenu.canceled += instance.OnOpenMenu;
+                @OpenDialogue.started += instance.OnOpenDialogue;
+                @OpenDialogue.performed += instance.OnOpenDialogue;
+                @OpenDialogue.canceled += instance.OnOpenDialogue;
             }
         }
     }
@@ -650,7 +650,7 @@ public class @GamepadActions : IInputActionCollection, IDisposable
     }
     public interface IDialogueActions
     {
-        void OnOpenMenu(InputAction.CallbackContext context);
+        void OnOpenDialogue(InputAction.CallbackContext context);
     }
     public interface IPlayerActions
     {

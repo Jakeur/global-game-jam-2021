@@ -187,6 +187,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4869186760946489953, guid: a1d8dfd9cb029404fb6fa9cf1ed11674, type: 3}
+      propertyPath: defaultDialogueSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 9441210791f41496cb679930f3b95c61, type: 2}
     - target: {fileID: 6485718894834474962, guid: a1d8dfd9cb029404fb6fa9cf1ed11674, type: 3}
       propertyPath: m_Name
       value: Dialogue
@@ -273,6 +277,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6485718894834474990, guid: a1d8dfd9cb029404fb6fa9cf1ed11674, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6485718894899569426, guid: a1d8dfd9cb029404fb6fa9cf1ed11674, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
