@@ -1,17 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class NextStep : MonoBehaviour, IInteractable
+public class DialogueManager : MonoBehaviour
 {
-    public void Interact()
+    [SerializeField] Text title;
+    [SerializeField] Text description;
+    [SerializeField] DialogueSO dialogueSO;
+
+    public void ShowDialogue()
     {
-        Debug.Log("Crossed next step");
+
     }
 
-    public void ExitInteraction()
+    void RefreshDialogueContent()
     {
-        Debug.Log("Crossed next step");
+        
     }
 
     // Start is called before the first frame update

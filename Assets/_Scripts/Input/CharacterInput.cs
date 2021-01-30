@@ -8,7 +8,7 @@ public class CharacterInput : MonoBehaviour, IInteractInput
     public Command interactInput;
     private GamepadActions _inputActions;
 
-    [SerializeField] const string InteractableTag = "Interactable";
+    [SerializeField] string InteractableTag = "Interactable";
 
     public bool IsPressingInteract { get; private set; }
 
@@ -36,9 +36,12 @@ public class CharacterInput : MonoBehaviour, IInteractInput
         }
     }
 
-    private void OnTriggerExit()
+    private void OnTriggerExit(Collider other)
     {
-        // TODO Close popup
+        if (other.tag == InteractableTag)
+        {
+            other.gameObject.GetComponent<IInteractable>().ExitInteraction();
+        }
     }
 
     private void OnInteractButton(InputAction.CallbackContext context)
