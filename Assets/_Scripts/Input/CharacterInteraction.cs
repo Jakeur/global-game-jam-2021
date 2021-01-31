@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class CharacterInteraction : MonoBehaviour
 {
@@ -61,6 +58,7 @@ public class CharacterInteraction : MonoBehaviour
 
         // Subscribe to events
         inputReader.rightArmEvent += OnRightArm;
+        inputReader.leftArmEvent += OnLeftArm;
         inputReader.openDialogueEvent += OnOpenDialog;
         inputReader.equipEvent += OnEquip;
         inputReader.declineEvent += OnDecline;
@@ -70,6 +68,7 @@ public class CharacterInteraction : MonoBehaviour
     {
         // Unsubscribe to events
         inputReader.rightArmEvent -= OnRightArm;
+        inputReader.leftArmEvent -= OnLeftArm;
         inputReader.openDialogueEvent -= OnOpenDialog;
         inputReader.equipEvent -= OnEquip;
         inputReader.declineEvent -= OnDecline;
@@ -102,6 +101,10 @@ public class CharacterInteraction : MonoBehaviour
     private void OnRightArm()
     {
         Debug.Log("Character RightArm handler.");
+    }
+    private void OnLeftArm()
+    {
+        Debug.Log("Character left arm handler.");
     }
 
     private void OnOpenDialog()

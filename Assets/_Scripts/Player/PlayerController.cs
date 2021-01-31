@@ -9,8 +9,9 @@ using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour
 {
     [Header("Player's parameters")]
-    public float speed = 9;
-    public float jumpForce = 8;
+    [SerializeField] InputReader inputReader;
+    public float speed = 2;
+    public float jumpForce = 3;
     public float distGround = 0.1f;
 
     /// Private variables.
@@ -18,10 +19,22 @@ public class PlayerController : MonoBehaviour
     private bool isDestroyed = false;
     private Vector3 initialPosition;
     private Animator animator;
+    private float direction = 0;
+    private bool isJump;
+
+    private void OnEnable()
+    {
+        inputReader.moveEvent += OnMove;
+    }
+
+    private void OnDisable()
+    {
+        inputReader.moveEvent -= OnMove;
+    }
 
     private void Start()
     {
-        PlayerSpawn();
+        // PlayerSpawn();
 
         Manager.manager.currentTable = SceneManager.GetActiveScene().name;
         rb = GetComponent<Rigidbody>();
@@ -60,12 +73,7 @@ public class PlayerController : MonoBehaviour
 
     private void PlayerMovement()
     {
-        float x = 0.0f;
-        float z = 0.0f;
-
-        // Set both horizontal and vertical axes to the player's input
-        animator.SetFloat("h", Input.GetAxis("Horizontal"));
-        animator.SetFloat("v", Input.GetAxis("Vertical"));
+        transform.position -= transform.forward * direction * speed * Time.deltaTime;
     }
 
     /// <summary> Detect if the player is on the ground. </summary>
@@ -80,5 +88,14 @@ public class PlayerController : MonoBehaviour
     private IEnumerator Wait(float seconds)
     {
         yield return new WaitForSeconds(seconds);
+    }
+
+    private void OnMove(Vector2 move)
+    {
+        direction = move.y;
+    }
+    private void OnJump()
+    {
+        isJump = true;
     }
 }

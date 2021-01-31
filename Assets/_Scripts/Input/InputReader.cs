@@ -137,8 +137,11 @@ public class InputReader : ScriptableObject, GamepadActions.IDialogueActions, Ga
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        throw new System.NotImplementedException();
-    }
+		if (jumpEvent != null && context.phase == InputActionPhase.Performed)
+		{
+			jumpEvent.Invoke();
+		}
+	}
 
     public void OnInteract(InputAction.CallbackContext context)
     {
