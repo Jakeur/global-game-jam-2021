@@ -578,6 +578,7 @@ GameObject:
   - component: {fileID: 3482616760924150364}
   - component: {fileID: 3482616760926230814}
   - component: {fileID: 3482616760920248927}
+  - component: {fileID: -7877122851679313070}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -662,8 +663,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce7a80d520cacc042b5fe14f373d8173, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_MovingTurnSpeed: 360
-  m_StationaryTurnSpeed: 180
   m_JumpPower: 6
   m_GravityMultiplier: 2
   m_RunCycleLegOffset: 0.2
@@ -684,6 +683,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InteractableTag: Interactable
   inputReader: {fileID: 11400000, guid: ab858efded3c3445bb6f2903e49f36eb, type: 2}
+--- !u!114 &-7877122851679313070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3482616760920248924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d67347f5f56d6db49ba1164da16ce415, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputReader: {fileID: 0}
+  speed: 2
+  jumpForce: 3
+  distGround: 0.1
 --- !u!1 &3843775252733338638
 GameObject:
   m_ObjectHideFlags: 0

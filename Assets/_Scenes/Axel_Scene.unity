@@ -684,17 +684,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1970406843}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90f22fa036e5a344286e619a3502cbe1, type: 3}
+  m_Script: {fileID: 11500000, guid: fd2e87a00727b6842ae2245f93e82ab3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputReader: {fileID: 11400000, guid: ab858efded3c3445bb6f2903e49f36eb, type: 2}
   speed: 2
-  m_JumpPower: 6
-  m_GravityMultiplier: 2
-  m_RunCycleLegOffset: 0.2
-  m_MoveSpeedMultiplier: 1
-  m_AnimSpeedMultiplier: 1
-  m_GroundCheckDistance: 0.1
+  directionSelectionMenu: {fileID: 0}
+  inputReader: {fileID: 0}
 --- !u!1001 &2936537587815784489
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -708,7 +703,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3482616760920248927, guid: 5457452ac46a1c14bac556d19abae8a8, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3482616760920532952, guid: 5457452ac46a1c14bac556d19abae8a8, type: 3}
       propertyPath: m_RootOrder
@@ -760,7 +755,7 @@ PrefabInstance:
       objectReference: {fileID: 13400000, guid: c2815a7ab32e42c4bb42f59caacb8ec1, type: 2}
     - target: {fileID: 3482616760926230814, guid: 5457452ac46a1c14bac556d19abae8a8, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5457452ac46a1c14bac556d19abae8a8, type: 3}

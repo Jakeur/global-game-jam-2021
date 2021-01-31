@@ -6983,6 +6983,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Merchander
       objectReference: {fileID: 0}
+    - target: {fileID: 2206144843870260483, guid: 7908288412b57402e95e536d6e43c296, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2206144843870260487, guid: 7908288412b57402e95e536d6e43c296, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -7096,6 +7100,10 @@ PrefabInstance:
     - target: {fileID: 6903410913967461937, guid: 11dbbfacbdcca4bbebd8d4ffaa00534f, type: 3}
       propertyPath: m_Name
       value: Equip Item
+      objectReference: {fileID: 0}
+    - target: {fileID: 6903410913967461937, guid: 11dbbfacbdcca4bbebd8d4ffaa00534f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6903410913967461950, guid: 11dbbfacbdcca4bbebd8d4ffaa00534f, type: 3}
       propertyPath: m_RootOrder

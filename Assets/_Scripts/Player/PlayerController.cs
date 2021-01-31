@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 /// <summary>
 /// This script allows to move the player ball and must be put on it. 
@@ -10,9 +9,11 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Player's parameters")]
     [SerializeField] InputReader inputReader;
-    public float speed = 2;
-    public float jumpForce = 3;
-    public float distGround = 0.1f;
+    [SerializeField] DirectionSelectionMenu directionSelectionMenu;
+    [SerializeField] float speed = 2;
+    [SerializeField] float decelleration = 1f;
+    [SerializeField] float jumpForce = 3;
+    [SerializeField] float distGround = 0.1f;
 
     /// Private variables.
     private Rigidbody rb;
@@ -25,21 +26,20 @@ public class PlayerController : MonoBehaviour
     private void OnEnable()
     {
         inputReader.moveEvent += OnMove;
+        inputReader.jumpEvent += OnJump;
     }
 
     private void OnDisable()
     {
         inputReader.moveEvent -= OnMove;
+        inputReader.jumpEvent -= OnJump;
     }
 
     private void Start()
     {
         // PlayerSpawn();
-
-        Manager.manager.currentTable = SceneManager.GetActiveScene().name;
-        rb = GetComponent<Rigidbody>();
-
-        animator = gameObject.GetComponent<Animator>();
+        rb = gameObject.GetComponent<Rigidbody>();
+        // animator = gameObject.GetComponent<Animator>();
     }
 
     private void PlayerSpawn()
@@ -73,7 +73,54 @@ public class PlayerController : MonoBehaviour
 
     private void PlayerMovement()
     {
-        transform.position -= transform.forward * direction * speed * Time.deltaTime;
+        float z = 0.0f;
+
+        if (IsGrounded())
+        {
+            if (direction != 0)
+            {
+                z = -direction*speed;
+            }
+            else
+            {
+                z = -rb.velocity.z * decelleration;
+            }
+        }
+        if (isJump && rb.velocity.y <= 0.1f && IsGrounded())
+        {
+            float y = jumpForce - rb.velocity.y;
+            rb.AddForce(0, y, 0, ForceMode.Impulse);
+            isJump = false;
+        }
+
+        if ((rb.velocity.z > speed) || (rb.velocity.z < -speed ))
+        {
+            z = 0;
+        }
+
+        rb.AddRelativeForce(0, 0, z, ForceMode.Impulse);
+    }
+
+    void UpdateStagePosition(Waypoint stageEndpoint)
+    {
+        transform.LookAt(stageEndpoint.transform.position);
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "CameraTrigger")
+        {
+            Waypoint wp = other.gameObject.GetComponent<Waypoint>();
+
+            if (wp.Transitions != null && wp.Transitions.Length > 0)
+            {
+                if (wp.TriggerCamera)
+                    directionSelectionMenu.Open(wp);
+            }
+            else if (wp.Transitions.Length == 1)
+            {
+                UpdateStagePosition(wp.Transitions[0].EndPoint);
+            }
+        }
     }
 
     /// <summary> Detect if the player is on the ground. </summary>
@@ -82,20 +129,16 @@ public class PlayerController : MonoBehaviour
         return Physics.Raycast(transform.position, -Vector3.up, distGround + 0.2f);
     }
 
-    /// <summary> Wait a specific time defined by the user. </summary>
-    /// <param name="seconds"> Time to wait in seconds. </param>
-    /// <returns> Return true if the waiting time is over. </returns>
-    private IEnumerator Wait(float seconds)
-    {
-        yield return new WaitForSeconds(seconds);
-    }
-
     private void OnMove(Vector2 move)
     {
-        direction = move.y;
+        direction = move.x;
     }
     private void OnJump()
     {
         isJump = true;
+    }
+    private void OnDestroy()
+    {
+        CameraAnimationManager.Instance.OnTransitionTriggered -= UpdateStagePosition;
     }
 }
