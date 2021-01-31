@@ -24,7 +24,7 @@ public class TazerArm : AEquipment
 
     public override void Animate(string animationTriggerId)
     {
-        throw new System.NotImplementedException();
+        return;
     }
 
     public override void Drop()
@@ -34,6 +34,6 @@ public class TazerArm : AEquipment
 
     public override void Stop(string animationTriggerId)
     {
-        throw new System.NotImplementedException();
+        return;
     }
 }

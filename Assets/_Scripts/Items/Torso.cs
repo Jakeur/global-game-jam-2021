@@ -13,7 +13,7 @@ public class Torso : AEquipment
 
     public override void Activate()
     {
-        throw new System.NotImplementedException();
+        animator.SetBool("jump", true);
     }
 
     public override void Animate(string animationTriggerId)
@@ -33,6 +33,7 @@ public class Torso : AEquipment
 
     public override void DeActivate()
     {
-        throw new System.NotImplementedException();
+        Debug.Log("Torso jump end");
+        animator.SetBool("jump", false);
     }
 }

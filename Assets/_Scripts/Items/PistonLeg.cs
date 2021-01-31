@@ -14,7 +14,7 @@ public class PistonLeg : AEquipment
 
     public override void Activate()
     {
-        throw new System.NotImplementedException();
+        animator.SetBool("jump", true);
     }
 
     public override void Animate(string animationTriggerId)
@@ -35,6 +35,6 @@ public class PistonLeg : AEquipment
 
     public override void DeActivate()
     {
-        throw new System.NotImplementedException();
+        animator.SetBool("jump", false);
     }
 }

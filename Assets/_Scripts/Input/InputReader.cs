@@ -7,6 +7,7 @@ public class InputReader : ScriptableObject, GamepadActions.ITradeActions, Gamep
 {
 	// Gameplay
 	public event UnityAction jumpEvent;
+	public event UnityAction jumpEventEnd;
 	public event UnityAction leftArmEvent;
 	public event UnityAction leftArmEventEnd;
 	public event UnityAction openDialogueEvent;
@@ -165,10 +166,14 @@ public class InputReader : ScriptableObject, GamepadActions.ITradeActions, Gamep
 
     public void OnJump(InputAction.CallbackContext context)
     {
-		if (jumpEvent != null && context.phase == InputActionPhase.Performed)
+		if (jumpEvent != null)
 		{
-			jumpEvent.Invoke();
+			if (context.phase == InputActionPhase.Performed)
+				jumpEvent.Invoke();
+			else if (context.phase == InputActionPhase.Canceled)
+				jumpEventEnd.Invoke();
 		}
+		
 	}
 
     public void OnInteract(InputAction.CallbackContext context)

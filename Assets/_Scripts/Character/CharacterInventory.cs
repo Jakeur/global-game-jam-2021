@@ -20,6 +20,13 @@ public class CharacterInventory : MonoBehaviour
 
     public static CharacterInventory Instance { get; private set; }
 
+    private PlayerController controller;
+
+    private void Awake()
+    {
+        controller = GetComponent<PlayerController>();
+    }
+
     private void OnEnable()
     {
         inputReader.moveEvent += OnMove;
@@ -29,6 +36,8 @@ public class CharacterInventory : MonoBehaviour
         inputReader.aimEvent += MoveArm;
         inputReader.rightArmEvent += ActivateRightArm;
         inputReader.rightArmEventEnd += StopRighttArm;
+        inputReader.jumpEvent += Jump;
+        inputReader.jumpEventEnd += StopJump;
     }
 
     private void OnDisable()
@@ -40,6 +49,8 @@ public class CharacterInventory : MonoBehaviour
         inputReader.aimEvent -= MoveArm;
         inputReader.rightArmEvent -= ActivateRightArm;
         inputReader.rightArmEventEnd -= StopRighttArm;
+        inputReader.jumpEvent -= Jump;
+        inputReader.jumpEventEnd -= StopJump;
     }
 
     public void EquipArm(ArmUiSO newArm)
@@ -137,5 +148,34 @@ public class CharacterInventory : MonoBehaviour
         {
             rightArmPivot.rotation = Quaternion.Euler(leftArmPivot.rotation.x, leftArmPivot.rotation.y, angle);
         }
+    }
+
+    public void Jump()
+    {
+        if (controller.IsGrounded())
+        {
+            Debug.Log("Jump animation triggered");
+            if (leftLeg.Equipment != null)
+                leftLeg.Equipment.Activate();
+            if (rightArm.Equipment != null)
+                rightArm.Equipment.Activate();
+            if (torso.Equipment != null)
+                torso.Equipment.Activate();
+        }
+        else
+        {
+            StopJump();
+        }
+    }
+
+    public void StopJump()
+    {
+
+            if (leftLeg.Equipment != null)
+                leftLeg.Equipment.DeActivate();
+            if (rightLeg.Equipment != null)
+                rightLeg.Equipment.DeActivate();
+            if (torso.Equipment != null)
+                torso.Equipment.DeActivate();
     }
 }

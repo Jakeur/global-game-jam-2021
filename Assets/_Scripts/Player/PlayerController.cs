@@ -124,7 +124,7 @@ public class PlayerController : MonoBehaviour
     }
 
     /// <summary> Detect if the player is on the ground. </summary>
-    private bool IsGrounded()
+    public bool IsGrounded()
     {
         return Physics.Raycast(transform.position, -Vector3.up, distGround + 0.2f);
     }
