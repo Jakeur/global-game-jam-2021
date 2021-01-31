@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class CharacterInventory : MonoBehaviour
 {
-    [SerializeField] ArmSO LeftArm;
-    [SerializeField] ArmSO RightArm;
-
+    [SerializeField] public ArmSO LeftArm;
+    [SerializeField] public ArmSO RightArm;
 
     public static CharacterInventory Instance { get; private set; }
 
