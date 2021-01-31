@@ -2,17 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewMemberProposal : MonoBehaviour, IInteractable, ITrader
+public class Trade : MonoBehaviour, IInteractable, ITrader
 {
     [SerializeField] DialogueSO welcomeDialogue;
     [SerializeField] DialogueSO tradingDialogue;
     [SerializeField] ArmUiSO ArmToTrade;
+    [SerializeField] InputReader inputReader;
+
+    void OnEnable()
+    {
+        inputReader.acceptEvent += Accept;
+        inputReader.declineEvent += Decline;
+    }
+
+    void OnDisable()
+    {
+        inputReader.acceptEvent -= Accept;
+        inputReader.declineEvent -= Decline;
+    }
 
     public void Interact()
     {
         DialogueManager.Instance.RefreshDialogueContent(welcomeDialogue);
         DialogueManager.Instance.ShowDialogue();
         CharacterInteraction.Instance.ChangeGameStep(GameLoopStep.DIALOGUE);
+        inputReader.openDialogueEvent += OpenTrade;
     }
 
     public void ExitInteraction()
@@ -20,18 +34,7 @@ public class NewMemberProposal : MonoBehaviour, IInteractable, ITrader
         DialogueManager.Instance.HideDialogue();
         TradeManager.Instance.HideTrade();
         CharacterInteraction.Instance.ChangeGameStep(GameLoopStep.EXPLORE);
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        inputReader.openDialogueEvent -= OpenTrade;
     }
 
     public void OpenTrade()
@@ -41,7 +44,7 @@ public class NewMemberProposal : MonoBehaviour, IInteractable, ITrader
         TradeManager.Instance.RefreshTradeContent(ArmToTrade);
 
         TradeManager.Instance.ShowTrade();
-        CharacterInteraction.Instance.ChangeGameStep(GameLoopStep.INVENTORY);
+        CharacterInteraction.Instance.ChangeGameStep(GameLoopStep.TRADE);
     }
 
     public void Accept()
