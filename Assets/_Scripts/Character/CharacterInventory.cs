@@ -7,6 +7,7 @@ public class CharacterInventory : MonoBehaviour
     [SerializeField] ArmSO LeftArm;
     [SerializeField] ArmSO RightArm;
 
+
     public static CharacterInventory Instance { get; private set; }
 
     private void CreateInstance()

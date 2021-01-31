@@ -20,7 +20,7 @@ public class BasicMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        transform.position -= transform.forward * Input.GetAxis("Horizontal") * speed * Time.deltaTime;
     }
 
     private void OnEnable()
@@ -35,7 +35,7 @@ public class BasicMovement : MonoBehaviour
 
     private void OnMove(Vector2 move)
     {
-        float direction = move.y * -1;
+        float direction = move.y;
 
         transform.position -= transform.forward * direction * speed * Time.deltaTime;
     }
