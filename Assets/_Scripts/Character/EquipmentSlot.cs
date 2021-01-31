@@ -8,7 +8,8 @@ public enum SlotType
     ARM,
     LEG,
     BACK,
-    HEAD
+    HEAD,
+    TORSO
 }
 
 [Serializable]
@@ -17,7 +18,7 @@ public class Equipmentslot
     [SerializeField] Transform pivot;
     [SerializeField] SlotType slotType;
 
-    private IEquipable _equipment;
+    [SerializeField] private AEquipment _equipment;
 
     public IEquipable Equipment => _equipment;
 

@@ -4,7 +4,11 @@ using UnityEngine;
 
 public interface IEquipable
 {
-    void Animate();
+    float AbilityValue { get; }
+
+    void Animate(string animationTriggerId);
+
+    void Stop(string animationTriggerId);
 
     void Drop();
 

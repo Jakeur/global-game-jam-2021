@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
 public class BasicMovement : MonoBehaviour
 {
-    public float speed = 2;
+    public float acceleration = 1;
 
     [SerializeField] DirectionSelectionMenu directionSelectionMenu;
     [SerializeField] InputReader inputReader;
@@ -13,6 +14,15 @@ public class BasicMovement : MonoBehaviour
 
     float horizontalAxis = 0f;
 
+    private Rigidbody rigidBody;
+    private CharacterInventory inventory;
+
+    private void Awake()
+    {
+        rigidBody = GetComponent<Rigidbody>();
+        inventory = GetComponent<CharacterInventory>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,9 +30,13 @@ public class BasicMovement : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        transform.position -= transform.forward * horizontalAxis * speed * Time.deltaTime;
+        float topSpeed = inventory.GetLegSpeed();
+
+        rigidBody.velocity += transform.forward * horizontalAxis * acceleration;
+
+        rigidBody.velocity = new Vector3(0, rigidBody.velocity.y, Mathf.Clamp(rigidBody.velocity.z, -topSpeed, topSpeed));
     }
 
     private void OnMove(Vector2 move)

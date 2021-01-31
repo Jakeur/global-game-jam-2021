@@ -18,6 +18,7 @@ public class InputReader : ScriptableObject, GamepadActions.ITradeActions, Gamep
 	public event UnityAction competenceEvent; // Extra action
 	public event UnityAction<Vector2> changeItemSlot;
 	public event UnityAction<Vector2> moveEvent;
+	public event UnityAction moveEventEnd;
 	public event UnityAction<Vector2> aimEvent;
 	public event UnityAction<Vector2> chooseStageEvent;
 
@@ -175,7 +176,12 @@ public class InputReader : ScriptableObject, GamepadActions.ITradeActions, Gamep
 	{
 		if (moveEvent != null)
 		{
-			moveEvent.Invoke(context.ReadValue<Vector2>());
+			if (context.phase == InputActionPhase.Canceled)
+            {
+				moveEventEnd.Invoke();
+			}
+			else
+				moveEvent.Invoke(context.ReadValue<Vector2>());
 		}
 	}
 
