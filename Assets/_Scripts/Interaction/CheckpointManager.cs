@@ -53,8 +53,8 @@ public class CheckpointManager : MonoBehaviour
         // Player restore values
         playerLastCheckPoint.SetActive(true);
         player.GetComponent<HealthManager>().currentHealth = playerLastCheckPoint.GetComponent<HealthManager>().currentHealth;
-        player.GetComponent<CharacterInventory>().LeftArm = playerLastCheckPoint.GetComponent<CharacterInventory>().LeftArm;
-        player.GetComponent<CharacterInventory>().RightArm = playerLastCheckPoint.GetComponent<CharacterInventory>().RightArm;
+        //player.GetComponent<CharacterInventory>().LeftArm = playerLastCheckPoint.GetComponent<CharacterInventory>().LeftArm;
+        //player.GetComponent<CharacterInventory>().RightArm = playerLastCheckPoint.GetComponent<CharacterInventory>().RightArm;
         player.transform.position = playerLastCheckPoint.transform.position;
         player.transform.rotation = playerLastCheckPoint.transform.rotation;
         
