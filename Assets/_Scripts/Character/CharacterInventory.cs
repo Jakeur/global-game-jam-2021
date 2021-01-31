@@ -8,6 +8,10 @@ public class CharacterInventory : MonoBehaviour
     [SerializeField] Equipmentslot rightLeg;
     [SerializeField] Equipmentslot torso;
     [SerializeField] Equipmentslot leftArm;
+    [SerializeField] Transform leftArmPivot;
+    private bool leftArmActive = false;
+
+    [SerializeField] Transform rightArmPivot;
     [SerializeField] Equipmentslot rightArm;
 
 
@@ -19,12 +23,18 @@ public class CharacterInventory : MonoBehaviour
     {
         inputReader.moveEvent += OnMove;
         inputReader.moveEventEnd += OnStop;
+        inputReader.leftArmEvent += ActivateLeftArm;
+        inputReader.leftArmEventEnd += StopLeftArm;
+        inputReader.aimEvent += MoveArm;
     }
 
     private void OnDisable()
     {
         inputReader.moveEvent -= OnMove;
         inputReader.moveEventEnd -= OnStop;
+        inputReader.leftArmEvent -= ActivateLeftArm;
+        inputReader.leftArmEventEnd -= StopLeftArm;
+        inputReader.aimEvent -= MoveArm;
     }
 
     public void EquipArm(ArmUiSO newArm)
@@ -69,5 +79,35 @@ public class CharacterInventory : MonoBehaviour
             rightArm.Equipment.Stop("walk_right");
         if (torso.Equipment != null)
             torso.Equipment.Stop("walk");
+    }
+
+    public void ActivateLeftArm()
+    {
+        if (leftArm.Equipment != null)
+        {
+            leftArm.Equipment.Activate();
+            leftArmActive = true;
+        }
+    }
+
+    public void StopLeftArm()
+    {
+        if (leftArm.Equipment != null)
+        {
+            leftArm.Equipment.DeActivate();
+            leftArmActive = false;
+            leftArmPivot.rotation = Quaternion.Euler(0,0,-90);
+        }        
+    }
+
+    public void MoveArm(Vector2 direction)
+    {
+        float angle =  Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        //Quaternion rotation = Quaternion.AngleAxis(Vector2.SignedAngle(Vector2.up, direction), leftArmPivot.right);
+
+        if (leftArmActive)
+        {
+            leftArmPivot.rotation = Quaternion.Euler(leftArmPivot.rotation.x, leftArmPivot.rotation.y, angle);
+        }
     }
 }

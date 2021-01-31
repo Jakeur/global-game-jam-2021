@@ -32,4 +32,9 @@ public class PistonLeg : AEquipment
         Debug.Log(animationTriggerId);
         animator.SetBool(animationTriggerId, false);
     }
+
+    public override void DeActivate()
+    {
+        throw new System.NotImplementedException();
+    }
 }

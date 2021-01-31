@@ -14,4 +14,6 @@ public abstract class AEquipment : MonoBehaviour, IEquipable
     public abstract void Drop();
 
     public abstract void Stop(string animationTriggerId);
+
+    public abstract void DeActivate();
 }

@@ -13,4 +13,6 @@ public interface IEquipable
     void Drop();
 
     void Activate();
+
+    void DeActivate();
 }

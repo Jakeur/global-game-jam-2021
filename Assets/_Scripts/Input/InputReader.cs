@@ -8,12 +8,14 @@ public class InputReader : ScriptableObject, GamepadActions.ITradeActions, Gamep
 	// Gameplay
 	public event UnityAction jumpEvent;
 	public event UnityAction leftArmEvent;
+	public event UnityAction leftArmEventEnd;
 	public event UnityAction openDialogueEvent;
 	public event UnityAction equipEvent;
 	public event UnityAction cancelEvent;
 	public event UnityAction acceptEvent;
 	public event UnityAction declineEvent;
 	public event UnityAction rightArmEvent;
+	public event UnityAction rightArmEventEnd;
 	public event UnityAction interactEvent; // Used to talk, pickup objects, interact with tools
 	public event UnityAction competenceEvent; // Extra action
 	public event UnityAction<Vector2> changeItemSlot;
@@ -136,18 +138,25 @@ public class InputReader : ScriptableObject, GamepadActions.ITradeActions, Gamep
 
     public void OnRightArm(InputAction.CallbackContext context)
 	{
-		Debug.Log("RightArm");
-		if (rightArmEvent != null && context.phase == InputActionPhase.Performed)
+		if (rightArmEvent != null)
 		{
-			Debug.Log("RightArm event invoke");
-			rightArmEvent.Invoke();
+			if (context.phase == InputActionPhase.Performed)
+				rightArmEvent.Invoke();
+			else if (context.phase == InputActionPhase.Performed)
+				rightArmEventEnd.Invoke();
 		}
     }
 
     public void OnLeftArm(InputAction.CallbackContext context)
     {
-
-    }
+		if (leftArmEvent != null)
+		{
+			if (context.phase == InputActionPhase.Performed)
+				leftArmEvent.Invoke();
+			else if (context.phase == InputActionPhase.Canceled)
+				leftArmEventEnd.Invoke();
+		}
+	}
 
     public void OnCompetence(InputAction.CallbackContext context)
     {

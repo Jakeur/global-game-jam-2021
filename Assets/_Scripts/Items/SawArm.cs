@@ -32,4 +32,9 @@ public class SawArm : AEquipment
     {
         animator.SetBool(animationTriggerId, false);
     }
+
+    public override void DeActivate()
+    {
+        throw new System.NotImplementedException();
+    }
 }
