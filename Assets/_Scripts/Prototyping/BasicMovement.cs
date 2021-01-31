@@ -11,6 +11,8 @@ public class BasicMovement : MonoBehaviour
 
     private bool movementLocked = false;
 
+    float horizontalAxis = 0f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +22,12 @@ public class BasicMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        transform.position -= transform.forward * horizontalAxis * speed * Time.deltaTime;
+    }
 
+    private void OnMove(Vector2 move)
+    {
+        horizontalAxis = move.y;
     }
 
     private void OnEnable()
@@ -31,13 +38,6 @@ public class BasicMovement : MonoBehaviour
     private void OnDisable()
     {
         inputReader.moveEvent -= OnMove;
-    }
-
-    private void OnMove(Vector2 move)
-    {
-        float direction = move.y * -1;
-
-        transform.position -= transform.forward * direction * speed * Time.deltaTime;
     }
 
     void UpdateStagePosition(Waypoint stageEndpoint)
