@@ -1,93 +1,88 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(ThirdPersonCharacter))]
 public class CharacterInteraction : MonoBehaviour
 {
     [SerializeField] string InteractableTag = "Interactable";
     [SerializeField] InputReader inputReader;
 
-    /// Private variables.
-    private Rigidbody rb;
-    private bool isDestroyed = false;
-    private Vector3 initialPosition;
-    private bool isJump;
+    private GameLoopStep currentStep;
+    private GameObject characterInteractingWith;
 
-    private ThirdPersonCharacter m_Character;
-    private Vector3 m_Move;
-    private float z;
+    public static CharacterInteraction Instance { get; private set; }
+
+    private void CreateInstance()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            Instance = this;
+        }
+    }
+
+    public void ChangeGameStep(GameLoopStep newStep)
+    {
+        currentStep = newStep;
+
+        switch (currentStep)
+        {
+            case GameLoopStep.DIALOGUE:
+                inputReader.EnableDialogueInput();
+                break;
+            case GameLoopStep.EXPLORE:
+                inputReader.EnablePlayerInput();
+                break;
+            case GameLoopStep.INVENTORY:
+                inputReader.EnableInventoryInput();
+                break;
+            case GameLoopStep.MENU:
+                inputReader.EnableMenuInput();
+                break;
+        }
+    }
+
+    public int GetControllerId()
+    {
+        return ((int)inputReader.controller);
+    }
 
     private void OnEnable()
     {
+        // Singleton creation
+        CreateInstance();
+
+        // Init step
+        currentStep = GameLoopStep.EXPLORE;
+
+        // Subscribe to events
         inputReader.rightArmEvent += OnRightArm;
-        inputReader.leftArmEvent += OnLeftArm;
-        inputReader.jumpEvent += OnJump;
-        inputReader.moveEvent += OnPlayerMove;
+        inputReader.openDialogueEvent += OnOpenDialog;
+        inputReader.equipEvent += OnEquip;
+        inputReader.declineEvent += OnDecline;
     }
 
     private void OnDisable()
     {
+        // Unsubscribe to events
         inputReader.rightArmEvent -= OnRightArm;
-        inputReader.leftArmEvent -= OnLeftArm;
-        inputReader.jumpEvent -= OnJump;
-        inputReader.moveEvent -= OnPlayerMove;
+        inputReader.openDialogueEvent -= OnOpenDialog;
+        inputReader.equipEvent -= OnEquip;
+        inputReader.declineEvent -= OnDecline;
     }
 
-    private void Start()
-    {
-        PlayerSpawn();
-        rb = GetComponent<Rigidbody>();
-
-        m_Character = GetComponent<ThirdPersonCharacter>();
-    }
-
-    private void PlayerSpawn()
-    {
-        Vector3 spawnPosition = new Vector3();
-        if (!PlayerPrefs.HasKey("Spawn"))
-        {
-            initialPosition = transform.position;
-            PlayerPrefs.SetString("Spawn", gameObject.transform.position.ToString());
-        }
-        string spawn = PlayerPrefs.GetString("Spawn");
-        spawn = spawn.Replace("(", "");
-        spawn = spawn.Replace(")", "");
-        spawn = spawn.Replace(",", ";");
-
-#if UNITY_EDITOR
-        spawn = spawn.Replace(".", ",");
-#endif
-
-        string[] splitPosition = spawn.Split(";"[0]);
-
-        spawnPosition = new Vector3(float.Parse(splitPosition[0]), float.Parse(splitPosition[1]), float.Parse(splitPosition[2]));
-
-        gameObject.transform.position = spawnPosition;
-    }
-
-    private void FixedUpdate()
-    {
-        bool crouch = Input.GetKey(KeyCode.C);
-
-        Debug.Log("Z: " + z);
-        m_Move = z * transform.forward;
-
-        m_Character.Move(m_Move, crouch, isJump);
-        isJump = false;
-    }
-
-
-    private IEnumerator Wait(float seconds)
-    {
-        yield return new WaitForSeconds(seconds);
-    }
-
+    #region Trigger events
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == InteractableTag)
         {
             other.gameObject.GetComponent<IInteractable>().Interact();
+            characterInteractingWith = other.gameObject;
         }
     }
 
@@ -96,27 +91,36 @@ public class CharacterInteraction : MonoBehaviour
         if (other.tag == InteractableTag)
         {
             other.gameObject.GetComponent<IInteractable>().ExitInteraction();
+            characterInteractingWith = null;
         }
     }
 
+    #endregion
+
+    #region Handle function
+
     private void OnRightArm()
     {
-        Debug.Log("Character RightArm handler.");       
+        Debug.Log("Character RightArm handler.");
     }
 
-    private void OnLeftArm()
+    private void OnOpenDialog()
     {
-        Debug.Log("Character left arm handler.");
+        if (characterInteractingWith != null)
+            characterInteractingWith.GetComponent<ITrader>().OpenTrade();
     }
 
-    private void OnJump()
+    private void OnEquip()
     {
-        isJump = true;
+        if (characterInteractingWith != null)
+            characterInteractingWith.GetComponent<ITrader>().Accept();
     }
 
-    private void OnPlayerMove(Vector2 vector2)
+    private void OnDecline()
     {
-        z = vector2.x;
+        if (characterInteractingWith != null)
+            characterInteractingWith.GetComponent<ITrader>().Decline();
     }
 
+    #endregion
 }

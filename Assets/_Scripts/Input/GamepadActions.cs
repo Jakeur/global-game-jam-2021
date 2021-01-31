@@ -58,7 +58,7 @@ public class @GamepadActions : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""626d760f-99a8-417f-8127-60e1447e5dc4"",
-                    ""path"": ""<Gamepad>/dpad/down"",
+                    ""path"": ""<Gamepad>/buttonWest"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Xbox control scheme;PS4 control scheme"",
@@ -127,6 +127,14 @@ public class @GamepadActions : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": ""StickDeadzone"",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""ChooseStage"",
+                    ""type"": ""Value"",
+                    ""id"": ""7d77adfb-02ad-444c-873f-835afe627338"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": ""StickDeadzone"",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -180,7 +188,7 @@ public class @GamepadActions : IInputActionCollection, IDisposable
                     ""path"": ""<Gamepad>/buttonNorth"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Xbox control scheme;PS4 control scheme"",
                     ""action"": ""Competence"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -202,7 +210,7 @@ public class @GamepadActions : IInputActionCollection, IDisposable
                     ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Xbox control scheme;PS4 control scheme"",
                     ""action"": ""Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -224,7 +232,7 @@ public class @GamepadActions : IInputActionCollection, IDisposable
                     ""path"": ""<Gamepad>/buttonWest"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Xbox control scheme;PS4 control scheme"",
                     ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -246,7 +254,7 @@ public class @GamepadActions : IInputActionCollection, IDisposable
                     ""path"": ""<Gamepad>/leftStick"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Xbox control scheme;PS4 control scheme"",
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -311,8 +319,8 @@ public class @GamepadActions : IInputActionCollection, IDisposable
                     ""id"": ""7ef02720-74c1-4c44-b5cf-ec87ded82ea4"",
                     ""path"": ""<Gamepad>/rightStick"",
                     ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
+                    ""processors"": ""StickDeadzone"",
+                    ""groups"": ""Xbox control scheme;PS4 control scheme"",
                     ""action"": ""Aim"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -327,6 +335,116 @@ public class @GamepadActions : IInputActionCollection, IDisposable
                     ""action"": ""Aim"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""d011384c-ea09-4831-ab4c-eb8770297dc4"",
+                    ""path"": ""2DVector(mode=1)"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChooseStage"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""19d3d89a-af8d-4a9b-aac9-e8f6ee21120c"",
+                    ""path"": ""<Gamepad>/dpad/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Xbox control scheme;PS4 control scheme"",
+                    ""action"": ""ChooseStage"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""53180c19-af7f-4180-992a-89026ffe61d8"",
+                    ""path"": ""<Gamepad>/dpad/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChooseStage"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""56e21749-b892-4f55-b378-82c0a0699be8"",
+                    ""path"": ""<Gamepad>/dpad/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChooseStage"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""535b3a79-a443-452c-be29-f29d55d3db27"",
+                    ""path"": ""<Gamepad>/dpad/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChooseStage"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""96ee0179-c5b0-4ce4-ac6e-4a04d69f4939"",
+                    ""path"": ""2DVector(mode=1)"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChooseStage"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""d829eb33-1d08-4bb1-84fd-298d6a1b26ba"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChooseStage"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""21fd4367-9ed6-4d42-9678-fc0ee6fea30a"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChooseStage"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""8b2af122-8fff-456f-acaf-9277218a68a5"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChooseStage"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""1f282f8b-914c-4e89-92be-6eaca3dc06b0"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChooseStage"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         },
@@ -341,17 +459,36 @@ public class @GamepadActions : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""Refuse"",
+                    ""type"": ""Button"",
+                    ""id"": ""db27c974-d895-42a4-bf4f-0f92278c6c87"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
                 }
             ],
             ""bindings"": [
                 {
                     ""name"": """",
                     ""id"": ""38231de9-0e96-4cf4-8663-eb435643e11c"",
-                    ""path"": ""<Gamepad>/dpad/down"",
+                    ""path"": ""<Gamepad>/buttonWest"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Xbox control scheme;PS4 control scheme"",
                     ""action"": ""Equip"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""dd156770-55a2-4a94-a55c-a5cd0b61fe01"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Refuse"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -398,9 +535,11 @@ public class @GamepadActions : IInputActionCollection, IDisposable
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_Aim = m_Player.FindAction("Aim", throwIfNotFound: true);
+        m_Player_ChooseStage = m_Player.FindAction("ChooseStage", throwIfNotFound: true);
         // Inventory
         m_Inventory = asset.FindActionMap("Inventory", throwIfNotFound: true);
         m_Inventory_Equip = m_Inventory.FindAction("Equip", throwIfNotFound: true);
+        m_Inventory_Refuse = m_Inventory.FindAction("Refuse", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -523,6 +662,7 @@ public class @GamepadActions : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_Interact;
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_Aim;
+    private readonly InputAction m_Player_ChooseStage;
     public struct PlayerActions
     {
         private @GamepadActions m_Wrapper;
@@ -534,6 +674,7 @@ public class @GamepadActions : IInputActionCollection, IDisposable
         public InputAction @Interact => m_Wrapper.m_Player_Interact;
         public InputAction @Move => m_Wrapper.m_Player_Move;
         public InputAction @Aim => m_Wrapper.m_Player_Aim;
+        public InputAction @ChooseStage => m_Wrapper.m_Player_ChooseStage;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -564,6 +705,9 @@ public class @GamepadActions : IInputActionCollection, IDisposable
                 @Aim.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAim;
                 @Aim.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAim;
                 @Aim.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAim;
+                @ChooseStage.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnChooseStage;
+                @ChooseStage.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnChooseStage;
+                @ChooseStage.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnChooseStage;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -589,6 +733,9 @@ public class @GamepadActions : IInputActionCollection, IDisposable
                 @Aim.started += instance.OnAim;
                 @Aim.performed += instance.OnAim;
                 @Aim.canceled += instance.OnAim;
+                @ChooseStage.started += instance.OnChooseStage;
+                @ChooseStage.performed += instance.OnChooseStage;
+                @ChooseStage.canceled += instance.OnChooseStage;
             }
         }
     }
@@ -598,11 +745,13 @@ public class @GamepadActions : IInputActionCollection, IDisposable
     private readonly InputActionMap m_Inventory;
     private IInventoryActions m_InventoryActionsCallbackInterface;
     private readonly InputAction m_Inventory_Equip;
+    private readonly InputAction m_Inventory_Refuse;
     public struct InventoryActions
     {
         private @GamepadActions m_Wrapper;
         public InventoryActions(@GamepadActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Equip => m_Wrapper.m_Inventory_Equip;
+        public InputAction @Refuse => m_Wrapper.m_Inventory_Refuse;
         public InputActionMap Get() { return m_Wrapper.m_Inventory; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -615,6 +764,9 @@ public class @GamepadActions : IInputActionCollection, IDisposable
                 @Equip.started -= m_Wrapper.m_InventoryActionsCallbackInterface.OnEquip;
                 @Equip.performed -= m_Wrapper.m_InventoryActionsCallbackInterface.OnEquip;
                 @Equip.canceled -= m_Wrapper.m_InventoryActionsCallbackInterface.OnEquip;
+                @Refuse.started -= m_Wrapper.m_InventoryActionsCallbackInterface.OnRefuse;
+                @Refuse.performed -= m_Wrapper.m_InventoryActionsCallbackInterface.OnRefuse;
+                @Refuse.canceled -= m_Wrapper.m_InventoryActionsCallbackInterface.OnRefuse;
             }
             m_Wrapper.m_InventoryActionsCallbackInterface = instance;
             if (instance != null)
@@ -622,6 +774,9 @@ public class @GamepadActions : IInputActionCollection, IDisposable
                 @Equip.started += instance.OnEquip;
                 @Equip.performed += instance.OnEquip;
                 @Equip.canceled += instance.OnEquip;
+                @Refuse.started += instance.OnRefuse;
+                @Refuse.performed += instance.OnRefuse;
+                @Refuse.canceled += instance.OnRefuse;
             }
         }
     }
@@ -661,9 +816,11 @@ public class @GamepadActions : IInputActionCollection, IDisposable
         void OnInteract(InputAction.CallbackContext context);
         void OnMove(InputAction.CallbackContext context);
         void OnAim(InputAction.CallbackContext context);
+        void OnChooseStage(InputAction.CallbackContext context);
     }
     public interface IInventoryActions
     {
         void OnEquip(InputAction.CallbackContext context);
+        void OnRefuse(InputAction.CallbackContext context);
     }
 }

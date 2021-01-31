@@ -5,4 +5,5 @@ public class DialogueSO : ScriptableObject
 {
     public string Title;
     public string Description;
+    public Sprite[] ButtonSprite;
 }

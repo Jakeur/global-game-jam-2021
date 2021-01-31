@@ -10,11 +10,13 @@ public class InputReader : ScriptableObject, GamepadActions.IDialogueActions, Ga
 	public event UnityAction leftArmEvent;
 	public event UnityAction openDialogueEvent;
 	public event UnityAction equipEvent;
+	public event UnityAction declineEvent;
 	public event UnityAction rightArmEvent;
 	public event UnityAction interactEvent; // Used to talk, pickup objects, interact with tools
 	public event UnityAction competenceEvent; // Extra action
 	public event UnityAction<Vector2> moveEvent;
 	public event UnityAction<Vector2> aimEvent;
+	public event UnityAction<Vector2> chooseStageEvent;
 
 	// Dialogue
 	public event UnityAction advanceDialogueEvent = delegate { };
@@ -22,8 +24,19 @@ public class InputReader : ScriptableObject, GamepadActions.IDialogueActions, Ga
 
 	private GamepadActions gameInput;
 
+	// Public accessor
+	public GameController controller;
+
 	private void OnEnable()
 	{
+		// Init controller
+		if (Input.GetJoystickNames().Length > 0 &&
+			Input.GetJoystickNames()[0].Contains("Sony"))
+			controller = GameController.PLAYSTATION;
+		else
+			controller = GameController.XBOX;
+
+		// Init callbacks
 		if (gameInput == null)
 		{
 			gameInput = new GamepadActions();
@@ -43,8 +56,26 @@ public class InputReader : ScriptableObject, GamepadActions.IDialogueActions, Ga
 
 	public void EnableDialogueInput()
 	{
-		//gameInput.Dialogues.Enable();
-		//gameInput.Gameplay.Disable();
+		gameInput.Player.Disable();
+		gameInput.Dialogue.Enable();
+		gameInput.Menu.Disable();
+		gameInput.Inventory.Disable();
+	}
+
+	public void EnableMenuInput()
+	{
+		gameInput.Player.Disable();
+		gameInput.Dialogue.Disable();
+		gameInput.Menu.Enable();
+		gameInput.Inventory.Disable();
+	}
+
+	public void EnableInventoryInput()
+	{
+		gameInput.Player.Disable();
+		gameInput.Dialogue.Disable();
+		gameInput.Menu.Disable();
+		gameInput.Inventory.Enable();
 	}
 
 	public void EnablePlayerInput()
@@ -57,19 +88,27 @@ public class InputReader : ScriptableObject, GamepadActions.IDialogueActions, Ga
 
 	public void DisableAllInput()
 	{
-		//gameInput.Gameplay.Disable();
-		//gameInput.Dialogues.Disable();
+		gameInput.Player.Disable();
+		gameInput.Dialogue.Disable();
+		gameInput.Menu.Disable();
+		gameInput.Inventory.Disable();
 	}
 
-    public void OnOpenDialogue(InputAction.CallbackContext context)
-    {
-        throw new System.NotImplementedException();
-    }
+	public void OnOpenDialogue(InputAction.CallbackContext context)
+	{
+		if (openDialogueEvent != null && context.phase == InputActionPhase.Performed)
+		{
+			openDialogueEvent.Invoke();
+		}
+	}
 
     public void OnEquip(InputAction.CallbackContext context)
-    {
-        throw new System.NotImplementedException();
-    }
+	{
+		if (equipEvent != null && context.phase == InputActionPhase.Performed)
+		{
+			equipEvent.Invoke();
+		}
+	}
 
     public void OnNewaction(InputAction.CallbackContext context)
     {
@@ -88,7 +127,7 @@ public class InputReader : ScriptableObject, GamepadActions.IDialogueActions, Ga
 
     public void OnLeftArm(InputAction.CallbackContext context)
     {
-        throw new System.NotImplementedException();
+
     }
 
     public void OnCompetence(InputAction.CallbackContext context)
@@ -98,30 +137,43 @@ public class InputReader : ScriptableObject, GamepadActions.IDialogueActions, Ga
 
     public void OnJump(InputAction.CallbackContext context)
     {
-		if (jumpEvent != null && context.phase == InputActionPhase.Performed)
-		{
-			jumpEvent.Invoke();
-		}
-	}
+        throw new System.NotImplementedException();
+    }
 
     public void OnInteract(InputAction.CallbackContext context)
     {
         throw new System.NotImplementedException();
     }
 
-    public void OnMove(InputAction.CallbackContext context)
-    {
+	public void OnChooseStage(InputAction.CallbackContext context)
+	{
+		if (chooseStageEvent != null && context.phase == InputActionPhase.Performed)
+		{
+			chooseStageEvent.Invoke(context.ReadValue<Vector2>());
+		}
+	}
+
+	public void OnMove(InputAction.CallbackContext context)
+	{
 		if (moveEvent != null)
 		{
 			moveEvent.Invoke(context.ReadValue<Vector2>());
 		}
 	}
 
-    public void OnAim(InputAction.CallbackContext context)
+	public void OnAim(InputAction.CallbackContext context)
 	{
 		if (aimEvent != null)
 		{
 			aimEvent.Invoke(context.ReadValue<Vector2>());
+		}
+	}
+
+    public void OnRefuse(InputAction.CallbackContext context)
+	{
+		if (declineEvent != null && context.phase == InputActionPhase.Performed)
+		{
+			declineEvent.Invoke();
 		}
 	}
 }
