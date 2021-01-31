@@ -28,6 +28,7 @@ public class DialogueManager : MonoBehaviour
     void Awake()
     {
         CreateInstance();
+
         RefreshDialogueContent(defaultDialogueSO);
     }
 

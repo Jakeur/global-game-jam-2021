@@ -3,17 +3,20 @@ using UnityEngine.InputSystem;
 using UnityEngine.Events;
 
 [CreateAssetMenu(fileName = "InputReader", menuName = "ScriptableObjects/Input Reader")]
-public class InputReader : ScriptableObject, GamepadActions.IDialogueActions, GamepadActions.IInventoryActions, GamepadActions.IMenuActions, GamepadActions.IPlayerActions
+public class InputReader : ScriptableObject, GamepadActions.ITradeActions, GamepadActions.IDialogueActions, GamepadActions.IInventoryActions, GamepadActions.IMenuActions, GamepadActions.IPlayerActions
 {
 	// Gameplay
 	public event UnityAction jumpEvent;
 	public event UnityAction leftArmEvent;
 	public event UnityAction openDialogueEvent;
 	public event UnityAction equipEvent;
+	public event UnityAction cancelEvent;
+	public event UnityAction acceptEvent;
 	public event UnityAction declineEvent;
 	public event UnityAction rightArmEvent;
 	public event UnityAction interactEvent; // Used to talk, pickup objects, interact with tools
 	public event UnityAction competenceEvent; // Extra action
+	public event UnityAction<Vector2> changeItemSlot;
 	public event UnityAction<Vector2> moveEvent;
 	public event UnityAction<Vector2> aimEvent;
 	public event UnityAction<Vector2> chooseStageEvent;
@@ -44,6 +47,7 @@ public class InputReader : ScriptableObject, GamepadActions.IDialogueActions, Ga
 			gameInput.Dialogue.SetCallbacks(this);
 			gameInput.Menu.SetCallbacks(this);
 			gameInput.Inventory.SetCallbacks(this);
+			gameInput.Trade.SetCallbacks(this);
 		}
 
 		EnablePlayerInput();
@@ -54,12 +58,22 @@ public class InputReader : ScriptableObject, GamepadActions.IDialogueActions, Ga
 		DisableAllInput();
 	}
 
+	public void EnableTradeInput()
+	{
+		gameInput.Player.Disable();
+		gameInput.Dialogue.Disable();
+		gameInput.Menu.Disable();
+		gameInput.Inventory.Disable();
+		gameInput.Trade.Enable();
+	}
+
 	public void EnableDialogueInput()
 	{
 		gameInput.Player.Disable();
 		gameInput.Dialogue.Enable();
 		gameInput.Menu.Disable();
 		gameInput.Inventory.Disable();
+		gameInput.Trade.Disable();
 	}
 
 	public void EnableMenuInput()
@@ -68,6 +82,7 @@ public class InputReader : ScriptableObject, GamepadActions.IDialogueActions, Ga
 		gameInput.Dialogue.Disable();
 		gameInput.Menu.Enable();
 		gameInput.Inventory.Disable();
+		gameInput.Trade.Disable();
 	}
 
 	public void EnableInventoryInput()
@@ -76,6 +91,7 @@ public class InputReader : ScriptableObject, GamepadActions.IDialogueActions, Ga
 		gameInput.Dialogue.Disable();
 		gameInput.Menu.Disable();
 		gameInput.Inventory.Enable();
+		gameInput.Trade.Disable();
 	}
 
 	public void EnablePlayerInput()
@@ -84,6 +100,7 @@ public class InputReader : ScriptableObject, GamepadActions.IDialogueActions, Ga
 		gameInput.Dialogue.Disable();
 		gameInput.Menu.Disable();
 		gameInput.Inventory.Disable();
+		gameInput.Trade.Disable();
 	}
 
 	public void DisableAllInput()
@@ -92,6 +109,7 @@ public class InputReader : ScriptableObject, GamepadActions.IDialogueActions, Ga
 		gameInput.Dialogue.Disable();
 		gameInput.Menu.Disable();
 		gameInput.Inventory.Disable();
+		gameInput.Trade.Disable();
 	}
 
 	public void OnOpenDialogue(InputAction.CallbackContext context)
@@ -172,11 +190,35 @@ public class InputReader : ScriptableObject, GamepadActions.IDialogueActions, Ga
 		}
 	}
 
-    public void OnRefuse(InputAction.CallbackContext context)
+    public void OnChangeItemSlot(InputAction.CallbackContext context)
+	{
+		if (changeItemSlot != null && context.phase == InputActionPhase.Started)
+		{
+			changeItemSlot.Invoke(context.ReadValue<Vector2>());
+		}
+	}
+
+    public void OnAccept(InputAction.CallbackContext context)
+	{
+		if (acceptEvent != null && context.phase == InputActionPhase.Performed)
+		{
+			acceptEvent.Invoke();
+		}
+	}
+
+    public void OnDecline(InputAction.CallbackContext context)
 	{
 		if (declineEvent != null && context.phase == InputActionPhase.Performed)
 		{
 			declineEvent.Invoke();
+		}
+	}
+
+    public void OnCancel(InputAction.CallbackContext context)
+	{
+		if (cancelEvent != null && context.phase == InputActionPhase.Performed)
+		{
+			cancelEvent.Invoke();
 		}
 	}
 }

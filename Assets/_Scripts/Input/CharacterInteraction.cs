@@ -1,4 +1,7 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class CharacterInteraction : MonoBehaviour
 {
@@ -40,6 +43,9 @@ public class CharacterInteraction : MonoBehaviour
             case GameLoopStep.MENU:
                 inputReader.EnableMenuInput();
                 break;
+            case GameLoopStep.TRADE:
+                inputReader.EnableTradeInput();
+                break;
         }
     }
 
@@ -55,23 +61,6 @@ public class CharacterInteraction : MonoBehaviour
 
         // Init step
         currentStep = GameLoopStep.EXPLORE;
-
-        // Subscribe to events
-        inputReader.rightArmEvent += OnRightArm;
-        inputReader.leftArmEvent += OnLeftArm;
-        inputReader.openDialogueEvent += OnOpenDialog;
-        inputReader.equipEvent += OnEquip;
-        inputReader.declineEvent += OnDecline;
-    }
-
-    private void OnDisable()
-    {
-        // Unsubscribe to events
-        inputReader.rightArmEvent -= OnRightArm;
-        inputReader.leftArmEvent -= OnLeftArm;
-        inputReader.openDialogueEvent -= OnOpenDialog;
-        inputReader.equipEvent -= OnEquip;
-        inputReader.declineEvent -= OnDecline;
     }
 
     #region Trigger events
@@ -101,28 +90,6 @@ public class CharacterInteraction : MonoBehaviour
     private void OnRightArm()
     {
         Debug.Log("Character RightArm handler.");
-    }
-    private void OnLeftArm()
-    {
-        Debug.Log("Character left arm handler.");
-    }
-
-    private void OnOpenDialog()
-    {
-        if (characterInteractingWith != null)
-            characterInteractingWith.GetComponent<ITrader>().OpenTrade();
-    }
-
-    private void OnEquip()
-    {
-        if (characterInteractingWith != null)
-            characterInteractingWith.GetComponent<ITrader>().Accept();
-    }
-
-    private void OnDecline()
-    {
-        if (characterInteractingWith != null)
-            characterInteractingWith.GetComponent<ITrader>().Decline();
     }
 
     #endregion
