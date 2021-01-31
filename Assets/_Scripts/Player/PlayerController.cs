@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rb;
     private bool isDestroyed = false;
     private Vector3 initialPosition;
+    private Animator animator;
 
     private void Start()
     {
@@ -24,6 +25,8 @@ public class PlayerController : MonoBehaviour
 
         Manager.manager.currentTable = SceneManager.GetActiveScene().name;
         rb = GetComponent<Rigidbody>();
+
+        animator = gameObject.GetComponent<Animator>();
     }
 
     private void PlayerSpawn()
@@ -59,6 +62,10 @@ public class PlayerController : MonoBehaviour
     {
         float x = 0.0f;
         float z = 0.0f;
+
+        // Set both horizontal and vertical axes to the player's input
+        animator.SetFloat("h", Input.GetAxis("Horizontal"));
+        animator.SetFloat("v", Input.GetAxis("Vertical"));
     }
 
     /// <summary> Detect if the player is on the ground. </summary>

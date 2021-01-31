@@ -1,0 +1,458 @@
+fileFormatVersion: 2
+guid: 22df662f5dc8ffe4b984bd2914fab8aa
+ModelImporter:
+  serializedVersion: 20200
+  internalIDToNameTable: []
+  externalObjects: {}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: "Invalid Avatar Rig Configuration. Missing or invalid transform:\n\tRequired
+      human bone 'Spine' not found\n"
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton:
+    - name: Herobotf(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Body
+      parentName: Herobotf(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: LegR
+      parentName: Herobotf(Clone)
+      position: {x: -0, y: 0, z: -0.00021973795}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: LegL
+      parentName: Herobotf(Clone)
+      position: {x: -0.012732026, y: 0, z: -0.00021973795}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: ArmR
+      parentName: Herobotf(Clone)
+      position: {x: 0.00031008455, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: ArmL
+      parentName: Herobotf(Clone)
+      position: {x: -0.04705481, y: 0, z: 0}
+      rotation: {x: -6.123234e-17, y: 1, z: 6.123234e-17, w: -3.7493994e-33}
+      scale: {x: 1, y: 1, z: 1}
+    - name: group2
+      parentName: Herobotf(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: groupcorps
+      parentName: group2
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: pCylinder1
+      parentName: groupcorps
+      position: {x: 0.00000838336, y: 0.041733403, z: 0.0006594039}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: transform1
+      parentName: pCylinder1
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: pSphere1
+      parentName: groupcorps
+      position: {x: -0.000031113283, y: 0.053280238, z: 0.00072198216}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 0.9013283, y: 0.9013283, z: 0.9013283}
+    - name: transform2
+      parentName: pSphere1
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: group
+      parentName: groupcorps
+      position: {x: 0.0027319877, y: 0.030880963, z: -0.002372672}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: group1
+      parentName: groupcorps
+      position: {x: 0.0027319877, y: 0.010468898, z: -0.002372672}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 0.60938054, z: 1}
+    - name: pasted__pSphere1
+      parentName: group1
+      position: {x: -0.0027631011, y: 0.036757447, z: 0.0030946543}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 0.9013283, y: 0.9013283, z: 0.9013283}
+    - name: transform13
+      parentName: pasted__pSphere1
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: pCube1
+      parentName: groupcorps
+      position: {x: -0, y: 0.056062944, z: 0.008352424}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1.85056, y: 0.7363213, z: 0.4202734}
+    - name: transform12
+      parentName: pCube1
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: pCylinder2
+      parentName: groupcorps
+      position: {x: 0.0042216894, y: 0.056401, z: 0.010298773}
+      rotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
+      scale: {x: 0.34367314, y: 0.019432126, z: 0.22295503}
+    - name: transform11
+      parentName: pCylinder2
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: pCylinder3
+      parentName: groupcorps
+      position: {x: -0.0048955223, y: 0.056401, z: 0.010298773}
+      rotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
+      scale: {x: 0.34367314, y: 0.019432126, z: 0.22295503}
+    - name: transform10
+      parentName: pCylinder3
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: pSphere2
+      parentName: groupcorps
+      position: {x: 0.01008385, y: 0.045920324, z: 0.0012298757}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 0.2364441, y: 0.2364441, z: 0.2364441}
+    - name: transform9
+      parentName: pSphere2
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: pSphere3
+      parentName: groupcorps
+      position: {x: -0.009844437, y: 0.045920324, z: 0.0012298757}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 0.2364441, y: 0.2364441, z: 0.2364441}
+    - name: transform8
+      parentName: pSphere3
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: pSphere4
+      parentName: groupcorps
+      position: {x: 0.006228816, y: 0.02938742, z: 0.0009111584}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 0.2364441, y: 0.2364441, z: 0.2364441}
+    - name: transform7
+      parentName: pSphere4
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: pSphere5
+      parentName: groupcorps
+      position: {x: -0.0063007013, y: 0.02938742, z: 0.0009111584}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 0.2364441, y: 0.2364441, z: 0.2364441}
+    - name: transform6
+      parentName: pSphere5
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: pCylinder4
+      parentName: groupcorps
+      position: {x: 0.0020286262, y: 0.043896783, z: -0.010114454}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 0.22218603, y: 0.55696464, z: 0.22218603}
+    - name: transform5
+      parentName: pCylinder4
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: pCylinder5
+      parentName: groupcorps
+      position: {x: -0.0022919104, y: 0.043896783, z: -0.010114454}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 0.22218603, y: 0.55696464, z: 0.22218603}
+    - name: transform4
+      parentName: pCylinder5
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: pCube2
+      parentName: groupcorps
+      position: {x: -0.00017599245, y: 0.03853773, z: -0.011364814}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 0.9436447, y: 0.34199122, z: 0.45919648}
+    - name: transform3
+      parentName: pCube2
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: groupbras
+      parentName: group2
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: pCylinder9
+      parentName: groupbras
+      position: {x: 0.02954623, y: 0.04601932, z: 0.001195948}
+      rotation: {x: 0, y: -0, z: -0.7071068, w: 0.7071068}
+      scale: {x: 0.20413737, y: 0.55380094, z: 0.20413737}
+    - name: transform19
+      parentName: pCylinder9
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: pSphere8
+      parentName: groupbras
+      position: {x: 0.022961332, y: 0.046041775, z: 0.0012405086}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 0.19019726, y: 0.19019726, z: 0.19019726}
+    - name: transform20
+      parentName: pSphere8
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: pCylinder8
+      parentName: groupbras
+      position: {x: 0.016723203, y: 0.04598083, z: 0.001195948}
+      rotation: {x: 0, y: -0, z: -0.7071068, w: 0.7071068}
+      scale: {x: 0.20413737, y: 0.55380094, z: 0.20413737}
+    - name: transform21
+      parentName: pCylinder8
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: groupjambe
+      parentName: group2
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: pCylinder6
+      parentName: groupjambe
+      position: {x: 0.0063588377, y: 0.02235568, z: 0.0010765526}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 0.20221499, y: 0.5735686, z: 0.20221499}
+    - name: transform14
+      parentName: pCylinder6
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: pCylinder7
+      parentName: groupjambe
+      position: {x: 0.0063588377, y: 0.008821927, z: 0.0010765526}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 0.20221499, y: 0.5735686, z: 0.20221499}
+    - name: transform16
+      parentName: pCylinder7
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: pSphere6
+      parentName: groupjambe
+      position: {x: 0.006368023, y: 0.015610552, z: 0.0011023042}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 0.22414485, y: 0.22414485, z: 0.22414485}
+    - name: transform15
+      parentName: pSphere6
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: pSphere7
+      parentName: groupjambe
+      position: {x: 0.006368023, y: 0.003055345, z: 0.0011023042}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 0.15726385, y: 0.15726385, z: 0.15726385}
+    - name: transform17
+      parentName: pSphere7
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: pCube3
+      parentName: groupjambe
+      position: {x: 0.006416034, y: 0.0013982384, z: 0.0034374087}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 0.40874735, y: 0.20041096, z: 0.9154303}
+    - name: transform18
+      parentName: pCube3
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Head
+      parentName: Herobotf(Clone)
+      position: {x: -0.00008889648, y: 0.056451477, z: 0.0009978346}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: corps
+      parentName: Head
+      position: {x: 0.0001155513, y: -0.010478532, z: -0.0004794212}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: epauleR
+      parentName: corps
+      position: {x: 0.009945594, y: -0.00024122934, z: 0.0005445854}
+      rotation: {x: -0.015039765, y: 0.99988693, z: 6.124475e-17, w: 3.6410743e-19}
+      scale: {x: 1, y: 1, z: 1}
+    - name: coudeR
+      parentName: epauleR
+      position: {x: -0.012936589, y: -1.1421419e-16, z: -1.3986102e-32}
+      rotation: {x: -5.877473e-39, y: -6.284381e-20, z: 0.0005131587, w: 0.9999999}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MainR
+      parentName: coudeR
+      position: {x: -0.014582937, y: -3.637715e-16, z: -1.8328945e-21}
+      rotation: {x: -0.0040321597, y: 0.9999919, z: 6.123184e-17, w: -2.4689858e-19}
+      scale: {x: 1, y: 1, z: 1}
+    - name: epauleL
+      parentName: corps
+      position: {x: -0.009928891, y: -0.000006028341, z: 0.00049899344}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: coudeL
+      parentName: epauleL
+      position: {x: -0.0132888565, y: 0, z: 1.3877787e-19}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: mainL
+      parentName: coudeL
+      position: {x: -0.013790579, y: 0.00020883181, z: 1.3877787e-19}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: hips
+      parentName: corps
+      position: {x: -0.000025518033, y: -0.014379155, z: -0.0005184134}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: hancheR
+      parentName: hips
+      position: {x: 0.0063368254, y: -0.0021642055, z: 0.000778123}
+      rotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+    - name: genouxR
+      parentName: hancheR
+      position: {x: -0.0138407685, y: 0, z: 0}
+      rotation: {x: 0.70699674, y: -0.01247571, z: 0.01247571, w: 0.70699674}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PiedsR
+      parentName: genouxR
+      position: {x: -0.012495511, y: 2.6020852e-20, z: -5.419064e-21}
+      rotation: {x: 0.5063216, y: 0.49359742, z: 0.5063216, w: -0.49359742}
+      scale: {x: 1, y: 1, z: 1}
+    - name: toesR
+      parentName: PiedsR
+      position: {x: 0.000025163421, y: -0.0018462508, z: 0.0056490987}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: hancheL
+      parentName: hips
+      position: {x: -0.006339099, y: -0.0021642055, z: 0.000778123}
+      rotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+    - name: genouxL
+      parentName: hancheL
+      position: {x: -0.0138407685, y: 0, z: 0}
+      rotation: {x: 0.707104, y: 0.0019836158, z: -0.0019836158, w: 0.707104}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PiedsL
+      parentName: genouxL
+      position: {x: -0.012495511, y: 2.6020852e-20, z: -5.419064e-21}
+      rotation: {x: 0.6613075, y: 0.25034466, z: 0.6613075, w: -0.25034466}
+      scale: {x: 1, y: 1, z: 1}
+    - name: toesL
+      parentName: PiedsL
+      position: {x: 0.00003278524, y: -0.005492339, z: 0.002318015}
+      rotation: {x: -0.3536175, y: 0, z: -0, w: 0.9353902}
+      scale: {x: 1, y: 1, z: 1}
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 1
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
