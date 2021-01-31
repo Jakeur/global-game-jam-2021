@@ -142,7 +142,7 @@ public class InputReader : ScriptableObject, GamepadActions.ITradeActions, Gamep
 		{
 			if (context.phase == InputActionPhase.Performed)
 				rightArmEvent.Invoke();
-			else if (context.phase == InputActionPhase.Performed)
+			else if (context.phase == InputActionPhase.Canceled)
 				rightArmEventEnd.Invoke();
 		}
     }

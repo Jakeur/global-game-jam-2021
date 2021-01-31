@@ -10,6 +10,7 @@ public class CharacterInventory : MonoBehaviour
     [SerializeField] Equipmentslot leftArm;
     [SerializeField] Transform leftArmPivot;
     private bool leftArmActive = false;
+    private bool rightArmActive = false;
 
     [SerializeField] Transform rightArmPivot;
     [SerializeField] Equipmentslot rightArm;
@@ -26,6 +27,8 @@ public class CharacterInventory : MonoBehaviour
         inputReader.leftArmEvent += ActivateLeftArm;
         inputReader.leftArmEventEnd += StopLeftArm;
         inputReader.aimEvent += MoveArm;
+        inputReader.rightArmEvent += ActivateRightArm;
+        inputReader.rightArmEventEnd += StopRighttArm;
     }
 
     private void OnDisable()
@@ -35,6 +38,8 @@ public class CharacterInventory : MonoBehaviour
         inputReader.leftArmEvent -= ActivateLeftArm;
         inputReader.leftArmEventEnd -= StopLeftArm;
         inputReader.aimEvent -= MoveArm;
+        inputReader.rightArmEvent -= ActivateRightArm;
+        inputReader.rightArmEventEnd -= StopRighttArm;
     }
 
     public void EquipArm(ArmUiSO newArm)
@@ -96,8 +101,27 @@ public class CharacterInventory : MonoBehaviour
         {
             leftArm.Equipment.DeActivate();
             leftArmActive = false;
-            leftArmPivot.rotation = Quaternion.Euler(0,0,-90);
+            leftArmPivot.localRotation = Quaternion.Euler(0,0,-90);
         }        
+    }
+
+    public void ActivateRightArm()
+    {
+        if (rightArm.Equipment != null)
+        {
+            rightArm.Equipment.Activate();
+            rightArmActive = true;
+        }
+    }
+
+    public void StopRighttArm()
+    {
+        if (rightArm.Equipment != null)
+        {
+            rightArm.Equipment.DeActivate();
+            rightArmActive = false;
+            rightArmPivot.localRotation = Quaternion.Euler(0, 0, -90f);
+        }
     }
 
     public void MoveArm(Vector2 direction)
@@ -108,6 +132,10 @@ public class CharacterInventory : MonoBehaviour
         if (leftArmActive)
         {
             leftArmPivot.rotation = Quaternion.Euler(leftArmPivot.rotation.x, leftArmPivot.rotation.y, angle);
+        }
+        if (rightArmActive)
+        {
+            rightArmPivot.rotation = Quaternion.Euler(leftArmPivot.rotation.x, leftArmPivot.rotation.y, angle);
         }
     }
 }
