@@ -5,4 +5,8 @@ using UnityEngine;
 public interface IEquipable
 {
     void Animate();
+
+    void Drop();
+
+    void Activate();
 }

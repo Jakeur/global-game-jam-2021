@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class CharacterInventory : MonoBehaviour
 {
-    [SerializeField] ArmSO LeftArm;
-    [SerializeField] ArmSO RightArm;
+    [SerializeField] Equipmentslot[] equipmentslots;
 
 
     public static CharacterInventory Instance { get; private set; }

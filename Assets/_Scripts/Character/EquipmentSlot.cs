@@ -14,6 +14,18 @@ public enum SlotType
 [Serializable]
 public class Equipmentslot
 {
-    [SerializeField] IEquipable equipment;
-    [SerializeField] SlotType[] slotTypes;
+    [SerializeField] Transform pivot;
+    [SerializeField] SlotType slotType;
+
+    private IEquipable _equipment;
+
+    public IEquipable Equipment => _equipment;
+
+    public void AttachEquipment(IEquipable equipment)
+    {
+        if (_equipment != null)
+        {
+            _equipment.Drop();
+        }
+    }
 }
