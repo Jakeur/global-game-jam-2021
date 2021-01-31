@@ -11,11 +11,11 @@ public class CameraAnimationManager : MonoBehaviour
 
     public static CameraAnimationManager Instance => _instance;
 
-    private static int _currentStage = 0;
+    private int _currentStage = 0;
 
     public Action<Waypoint> OnTransitionTriggered;
 
-    public int CurrentStage => _currentStage;
+    public int CurrentStage { get { return _currentStage; } set { _currentStage = value; } }
 
     private void Awake()
     {

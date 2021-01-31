@@ -8,6 +8,8 @@ public class CharacterInteraction : MonoBehaviour
     [SerializeField] string InteractableTag = "Interactable";
     [SerializeField] InputReader inputReader;
 
+    private bool interacting = false;
+
     private GameLoopStep currentStep;
     private GameObject characterInteractingWith;
 
@@ -44,6 +46,9 @@ public class CharacterInteraction : MonoBehaviour
                 inputReader.EnableMenuInput();
                 break;
             case GameLoopStep.TRADE:
+                // When a player trade, save checkpoint
+                CheckpointManager.Instance.UpdateCheckpoint(this.gameObject, Camera.main.transform, CameraAnimationManager.Instance.CurrentStage);
+
                 inputReader.EnableTradeInput();
                 break;
         }
@@ -54,21 +59,33 @@ public class CharacterInteraction : MonoBehaviour
         return ((int)inputReader.controller);
     }
 
-    private void OnEnable()
+    private void Awake()
     {
         // Singleton creation
         CreateInstance();
 
+        // First checkpoint creation
+        CheckpointManager.Instance.InstantiateCheckpoint(this.gameObject, Camera.main.transform, CameraAnimationManager.Instance.CurrentStage);
+    }
+
+    private void OnEnable()
+    {
         // Init step
         currentStep = GameLoopStep.EXPLORE;
+    }
+
+    private void OnDisable()
+    {
+        Debug.Log("Disparu");
     }
 
     #region Trigger events
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == InteractableTag)
+        if (other.tag == InteractableTag && !interacting)
         {
+            interacting = true;
             other.gameObject.GetComponent<IInteractable>().Interact();
             characterInteractingWith = other.gameObject;
         }
@@ -78,6 +95,7 @@ public class CharacterInteraction : MonoBehaviour
     {
         if (other.tag == InteractableTag)
         {
+            interacting = false;
             other.gameObject.GetComponent<IInteractable>().ExitInteraction();
             characterInteractingWith = null;
         }
@@ -87,9 +105,12 @@ public class CharacterInteraction : MonoBehaviour
 
     #region Handle function
 
-    private void OnRightArm()
+    public void PlayerDeath()
     {
-        Debug.Log("Character RightArm handler.");
+        // TODO Make animation
+        CheckpointManager.Instance.RestoreLastCheckpoint(this.gameObject);
+
+        //Destroy(this.gameObject);
     }
 
     #endregion
