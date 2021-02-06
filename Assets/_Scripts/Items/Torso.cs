@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,8 @@ public class Torso : AEquipment
 {
     private Animator animator;
 
+    public Action OnJump;
+
     private void Awake()
     {
         animator = GetComponent<Animator>();
@@ -13,7 +16,8 @@ public class Torso : AEquipment
 
     public override void Activate()
     {
-        animator.SetBool("jump", true);
+        Debug.Log("TORSO JUMP");
+        animator.Play("Jump");
     }
 
     public override void Animate(string animationTriggerId)
@@ -33,7 +37,11 @@ public class Torso : AEquipment
 
     public override void DeActivate()
     {
-        Debug.Log("Torso jump end");
-        animator.SetBool("jump", false);
+
+    }
+
+    public void JumpAnimDone()
+    {
+        OnJump.Invoke();
     }
 }

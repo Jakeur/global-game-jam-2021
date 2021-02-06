@@ -7,27 +7,22 @@ public class CharacterAnimManager : MonoBehaviour
 {
     CharacterInventory _inventory;
 
-    [SerializeField] InputReader inputReader;
+    GamepadActions controls;
 
     private void Awake()
     {
         _inventory = GetComponent<CharacterInventory>();
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+        controls = new GamepadActions();
     }
 
     private void OnEnable()
     {
-        inputReader.moveEvent += Walk;
+        controls.Enable();
     }
 
     private void OnDisable()
     {
-        inputReader.moveEvent -= Walk;
+        controls.Disable();
     }
 
     void Walk(Vector2 move)

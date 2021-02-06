@@ -48,10 +48,10 @@ public class TradeManager : MonoBehaviour
         title.text = tradeContent.Name;
         description.text = tradeContent.Description;
         itemImage.sprite = tradeContent.Sprite;
-        if (CharacterInteraction.Instance != null)
-        {
-            acceptButtonImage.sprite = acceptSpriteResource[CharacterInteraction.Instance.GetControllerId()];
-            declineButtonImage.sprite = declineSpriteResource[CharacterInteraction.Instance.GetControllerId()];
-        }
+        //if (CharacterInteraction.Instance != null)
+        //{
+        //    acceptButtonImage.sprite = acceptSpriteResource[CharacterInteraction.Instance.GetControllerId()];
+        //    declineButtonImage.sprite = declineSpriteResource[CharacterInteraction.Instance.GetControllerId()];
+        //}
     }
 }

@@ -18,39 +18,30 @@ public class DirectionSelectionMenu : MonoBehaviour
     private Waypoint _waypoint;
     [SerializeField] private List<KeyCode> authorizedKeys;
 
-    [SerializeField] InputReader inputReader;
+    GamepadActions controls;
 
     bool opened = false;
 
+    private void Awake()
+    {
+        controls = new GamepadActions();
+    }
+
     private void OnEnable()
     {
-        inputReader.chooseStageEvent += OnChooseStage;
+        controls.Menu.Enable();
     }
 
     private void OnDisable()
     {
-        inputReader.chooseStageEvent -= OnChooseStage;
+        UnsetControls();
     }
 
-    private void OnChooseStage(Vector2 vector)
+    private void OnChooseStage(StageDirection direction)
     {
-        KeyCode keyCode = KeyCode.None;
-
-        if (!opened)
-            return;
-
-        if (vector.x > 0 && vector.y == 0)
-            keyCode = KeyCode.RightArrow;
-        else if (vector.x < 0 && vector.y == 0)
-            keyCode = KeyCode.LeftArrow;
-        else if (vector.y > 0 && vector.x == 0)
-            keyCode = KeyCode.UpArrow;
-        else if (vector.y < 0 && vector.x == 0)
-            keyCode = KeyCode.DownArrow;
-
-        _waypoint.HandleKey(keyCode);
+        _waypoint.HandleKey(direction);
+        UnsetControls();
         Close();
-
     }
     
     public void Open(Waypoint waypoint)
@@ -62,6 +53,15 @@ public class DirectionSelectionMenu : MonoBehaviour
         opened = true;
     }
 
+    void UnsetControls()
+    {
+        controls.Menu.Up.performed -= ctx => OnChooseStage(StageDirection.UP);
+        controls.Menu.Right.performed -= ctx => OnChooseStage(StageDirection.RIGHT);
+        controls.Menu.Down.performed -= ctx => OnChooseStage(StageDirection.DOWN);
+        controls.Menu.Left.performed -= ctx => OnChooseStage(StageDirection.LEFT);
+        controls.Menu.Disable();
+    }
+
     void SetArrowImages()
     {
         ResetArrows();
@@ -70,21 +70,21 @@ public class DirectionSelectionMenu : MonoBehaviour
         {
             switch (transition.GetDirection(CameraAnimationManager.Instance.CurrentStage))
             {
-                case KeyCode.UpArrow:
+                case StageDirection.UP:
                     upArrow.color = enabledcolor;
-                    authorizedKeys.Add(KeyCode.UpArrow);
+                    controls.Menu.Up.performed += ctx => OnChooseStage(StageDirection.UP);
                     break;
-                case KeyCode.DownArrow:
+                case StageDirection.DOWN:
                     downArrow.color = enabledcolor;
-                    authorizedKeys.Add(KeyCode.DownArrow);
+                    controls.Menu.Up.performed += ctx => OnChooseStage(StageDirection.DOWN);
                     break;
-                case KeyCode.LeftArrow:
+                case StageDirection.LEFT:
                     leftArrow.color = enabledcolor;
-                    authorizedKeys.Add(KeyCode.LeftArrow);
+                    controls.Menu.Up.performed += ctx => OnChooseStage(StageDirection.LEFT);
                     break;
-                case KeyCode.RightArrow:
+                case StageDirection.RIGHT:
                     rightArrow.color = enabledcolor;
-                    authorizedKeys.Add(KeyCode.RightArrow);
+                    controls.Menu.Up.performed += ctx => OnChooseStage(StageDirection.RIGHT);
                     break;
             }
         }

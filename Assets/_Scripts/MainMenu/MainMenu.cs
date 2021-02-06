@@ -12,12 +12,22 @@ public class MainMenu : MonoBehaviour
     [Header("Canvas")]
     public GameObject OptionUI;
 
-    public string sceneToLoad = "Axel_Scene";
+    [SerializeField] string[] scenes;
+
+    void Start()
+    {
+        PlayGame();
+    }
 
     /// <summary> Function called to play the game. </summary>
     public void PlayGame()
     {
-        SceneManager.LoadScene(sceneToLoad);
+        foreach (string scene in scenes)
+        {
+            SceneManager.LoadScene(scene, LoadSceneMode.Additive);
+        }
+
+        SceneManager.UnloadScene("Menu");
     }
 
     /// <summary> Function called to play the game. </summary>

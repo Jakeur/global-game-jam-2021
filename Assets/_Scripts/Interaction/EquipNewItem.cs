@@ -6,33 +6,31 @@ public class EquipNewItem : MonoBehaviour, IInteractable, IEquipItem
 {
     [SerializeField] DialogueSO welcomeDialogue;
     [SerializeField] ArmUiSO ArmToEquip;
-    [SerializeField] InputReader inputReader;
+    GamepadActions controls;
 
     public void Interact()
     {
         DialogueManager.Instance.RefreshDialogueContent(welcomeDialogue);
         DialogueManager.Instance.ShowDialogue();
-        CharacterInteraction.Instance.ChangeGameStep(GameLoopStep.DIALOGUE);
-        inputReader.openDialogueEvent += OpenInventory;
+        //CharacterInteraction.Instance.ChangeGameStep(GameLoopStep.DIALOGUE);
+        
     }
 
     public void ExitInteraction()
     {
         EquipItemManager.Instance.HideInventory();
-        CharacterInteraction.Instance.ChangeGameStep(GameLoopStep.EXPLORE);
-        inputReader.openDialogueEvent -= OpenInventory;
+        //CharacterInteraction.Instance.ChangeGameStep(GameLoopStep.EXPLORE);
+        
     }
 
     void OnEnable()
     {
-        inputReader.equipEvent += Equip;
-        inputReader.cancelEvent += Cancel;
+        controls.Enable();
     }
 
     void OnDisable()
     {
-        inputReader.equipEvent -= Equip;
-        inputReader.cancelEvent -= Cancel;
+        controls.Disable();
     }
 
     public void OpenInventory()
@@ -42,7 +40,7 @@ public class EquipNewItem : MonoBehaviour, IInteractable, IEquipItem
         EquipItemManager.Instance.RefreshInventoryUiContent(ArmToEquip);
 
         EquipItemManager.Instance.ShowInventory();
-        CharacterInteraction.Instance.ChangeGameStep(GameLoopStep.INVENTORY);
+        //CharacterInteraction.Instance.ChangeGameStep(GameLoopStep.INVENTORY);
     }
 
     public void Equip()

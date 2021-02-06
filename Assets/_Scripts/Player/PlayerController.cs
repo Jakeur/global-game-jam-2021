@@ -8,12 +8,17 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [Header("Player's parameters")]
-    [SerializeField] InputReader inputReader;
     [SerializeField] DirectionSelectionMenu directionSelectionMenu;
     [SerializeField] float speed = 2;
-    [SerializeField] float decelleration = 1f;
+    [SerializeField] float acceleration = 1f;
     [SerializeField] float jumpForce = 3;
     [SerializeField] float distGround = 0.1f;
+    [SerializeField] LayerMask groundMask;
+
+    [SerializeField] Transform playerBody;
+    private bool isFlipped = false;
+
+    [SerializeField] Torso torso;
 
     /// Private variables.
     private Rigidbody rb;
@@ -22,24 +27,35 @@ public class PlayerController : MonoBehaviour
     private Animator animator;
     private float direction = 0;
     private bool isJump;
+    private bool _isGrounded = true;
+    public bool IsGrounded => _isGrounded;
+
+    private GamepadActions controls;
+
+    private void Awake()
+    {
+        controls = new GamepadActions();
+
+        controls.Player.Move.performed += ctx => direction = -ctx.ReadValue<Vector2>().x;
+        controls.Player.Move.canceled += ctx => direction = 0f;
+    }
 
     private void OnEnable()
     {
-        inputReader.moveEvent += OnMove;
-        inputReader.jumpEvent += OnJump;
+        controls.Player.Enable();
+        torso.OnJump += OnJump;
     }
 
     private void OnDisable()
     {
-        inputReader.moveEvent -= OnMove;
-        inputReader.jumpEvent -= OnJump;
+        controls.Player.Disable();
+        torso.OnJump -= OnJump;
     }
 
     private void Start()
     {
-        // PlayerSpawn();
+        //PlayerSpawn();
         rb = gameObject.GetComponent<Rigidbody>();
-        // animator = gameObject.GetComponent<Animator>();
     }
 
     private void PlayerSpawn()
@@ -71,40 +87,39 @@ public class PlayerController : MonoBehaviour
         PlayerMovement();
     }
 
+    private void Update()
+    {
+        _isGrounded = Physics.Raycast(transform.position, -Vector3.up, distGround + 0.2f, groundMask);
+
+        if (direction < 0 && !isFlipped)
+        {
+            isFlipped = true;
+            playerBody.localRotation = Quaternion.Euler(0, -180, 0);
+        }
+
+        if (direction > 0 && isFlipped)
+        {
+            isFlipped = false;
+            playerBody.localRotation = Quaternion.Euler(0, -0, 0);
+        }
+    }
+
     private void PlayerMovement()
     {
-        float z = 0.0f;
-
-        if (IsGrounded())
+        if (_isGrounded)
         {
-            if (direction != 0)
-            {
-                z = -direction*speed;
-            }
-            else
-            {
-                z = -rb.velocity.z * decelleration;
-            }
-        }
-        if (isJump && rb.velocity.y <= 0.1f && IsGrounded())
-        {
-            float y = jumpForce - rb.velocity.y;
-            rb.AddForce(0, y, 0, ForceMode.Impulse);
-            isJump = false;
-        }
+            Vector3 newVelocity = transform.forward * direction * speed * Time.fixedDeltaTime;
+            newVelocity.y = rb.velocity.y;
 
-        if ((rb.velocity.z > speed) || (rb.velocity.z < -speed ))
-        {
-            z = 0;
+            rb.velocity = newVelocity;
         }
-
-        rb.AddRelativeForce(0, 0, z, ForceMode.Impulse);
     }
 
     void UpdateStagePosition(Waypoint stageEndpoint)
     {
         transform.LookAt(stageEndpoint.transform.position);
     }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "CameraTrigger")
@@ -123,20 +138,14 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    /// <summary> Detect if the player is on the ground. </summary>
-    public bool IsGrounded()
-    {
-        return Physics.Raycast(transform.position, -Vector3.up, distGround + 0.2f);
-    }
-
-    private void OnMove(Vector2 move)
-    {
-        direction = move.x;
-    }
     private void OnJump()
     {
-        isJump = true;
+        if (_isGrounded)
+        {
+            rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+        }
     }
+
     private void OnDestroy()
     {
         CameraAnimationManager.Instance.OnTransitionTriggered -= UpdateStagePosition;

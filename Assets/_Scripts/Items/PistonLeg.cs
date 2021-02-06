@@ -14,7 +14,7 @@ public class PistonLeg : AEquipment
 
     public override void Activate()
     {
-        animator.SetBool("jump", true);
+        animator.Play("Jump");
     }
 
     public override void Animate(string animationTriggerId)
@@ -35,6 +35,6 @@ public class PistonLeg : AEquipment
 
     public override void DeActivate()
     {
-        animator.SetBool("jump", false);
+        //animator.Play("Jump");
     }
 }

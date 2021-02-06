@@ -28,8 +28,11 @@ public class DialogueManager : MonoBehaviour
     void Awake()
     {
         CreateInstance();
+    }
 
-        RefreshDialogueContent(defaultDialogueSO);
+    void Start()
+    {
+        RefreshDialogueContent(defaultDialogueSO); 
     }
 
     public void ShowDialogue()
@@ -46,9 +49,9 @@ public class DialogueManager : MonoBehaviour
     {
         title.text = newContent.Title;
         description.text = newContent.Description;
-        if (CharacterInteraction.Instance != null && newContent.ButtonSprite.Length > 0)
-            buttonImage.sprite = newContent.ButtonSprite[CharacterInteraction.Instance.GetControllerId()];
-        else
-            buttonImage.sprite = null;
+        //if (CharacterInteraction.Instance != null && newContent.ButtonSprite.Length > 0)
+        //    buttonImage.sprite = newContent.ButtonSprite[CharacterInteraction.Instance.GetControllerId()];
+        //else
+        //    buttonImage.sprite = null;
     }
 }

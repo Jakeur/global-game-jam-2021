@@ -7,34 +7,32 @@ public class Trade : MonoBehaviour, IInteractable, ITrader
     [SerializeField] DialogueSO welcomeDialogue;
     [SerializeField] DialogueSO tradingDialogue;
     [SerializeField] ArmUiSO ArmToTrade;
-    [SerializeField] InputReader inputReader;
+
+    GamepadActions controls;
 
     void OnEnable()
     {
-        inputReader.acceptEvent += Accept;
-        inputReader.declineEvent += Decline;
+        controls.Menu.Enable();
     }
 
     void OnDisable()
     {
-        inputReader.acceptEvent -= Accept;
-        inputReader.declineEvent -= Decline;
+        controls.Menu.Disable();
     }
 
     public void Interact()
     {
         DialogueManager.Instance.RefreshDialogueContent(welcomeDialogue);
         DialogueManager.Instance.ShowDialogue();
-        CharacterInteraction.Instance.ChangeGameStep(GameLoopStep.DIALOGUE);
-        inputReader.openDialogueEvent += OpenTrade;
+        //CharacterInteraction.Instance.ChangeGameStep(GameLoopStep.DIALOGUE);
+
     }
 
     public void ExitInteraction()
     {
         DialogueManager.Instance.HideDialogue();
         TradeManager.Instance.HideTrade();
-        CharacterInteraction.Instance.ChangeGameStep(GameLoopStep.EXPLORE);
-        inputReader.openDialogueEvent -= OpenTrade;
+        //CharacterInteraction.Instance.ChangeGameStep(GameLoopStep.EXPLORE);
     }
 
     public void OpenTrade()
@@ -44,7 +42,7 @@ public class Trade : MonoBehaviour, IInteractable, ITrader
         TradeManager.Instance.RefreshTradeContent(ArmToTrade);
 
         TradeManager.Instance.ShowTrade();
-        CharacterInteraction.Instance.ChangeGameStep(GameLoopStep.TRADE);
+        //CharacterInteraction.Instance.ChangeGameStep(GameLoopStep.TRADE);
     }
 
     public void Accept()

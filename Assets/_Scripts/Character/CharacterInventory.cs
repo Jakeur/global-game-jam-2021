@@ -16,7 +16,7 @@ public class CharacterInventory : MonoBehaviour
     [SerializeField] Equipmentslot rightArm;
 
 
-    [SerializeField] InputReader inputReader;
+    private GamepadActions controls;
 
     public static CharacterInventory Instance { get; private set; }
 
@@ -25,32 +25,22 @@ public class CharacterInventory : MonoBehaviour
     private void Awake()
     {
         controller = GetComponent<PlayerController>();
+        controls = new GamepadActions();
+
+        controls.Player.Move.performed += ctx => OnMove();
+        controls.Player.Move.canceled += ctx => OnStop();
+
+        controls.Player.Jump.performed += ctx => Jump();
     }
 
     private void OnEnable()
     {
-        inputReader.moveEvent += OnMove;
-        inputReader.moveEventEnd += OnStop;
-        inputReader.leftArmEvent += ActivateLeftArm;
-        inputReader.leftArmEventEnd += StopLeftArm;
-        inputReader.aimEvent += MoveArm;
-        inputReader.rightArmEvent += ActivateRightArm;
-        inputReader.rightArmEventEnd += StopRighttArm;
-        inputReader.jumpEvent += Jump;
-        inputReader.jumpEventEnd += StopJump;
+        controls.Player.Enable();
     }
 
     private void OnDisable()
     {
-        inputReader.moveEvent -= OnMove;
-        inputReader.moveEventEnd -= OnStop;
-        inputReader.leftArmEvent -= ActivateLeftArm;
-        inputReader.leftArmEventEnd -= StopLeftArm;
-        inputReader.aimEvent -= MoveArm;
-        inputReader.rightArmEvent -= ActivateRightArm;
-        inputReader.rightArmEventEnd -= StopRighttArm;
-        inputReader.jumpEvent -= Jump;
-        inputReader.jumpEventEnd -= StopJump;
+        controls.Player.Disable();
     }
 
     public void EquipArm(ArmUiSO newArm)
@@ -69,18 +59,25 @@ public class CharacterInventory : MonoBehaviour
             + (rightLeg.Equipment != null ? rightLeg.Equipment.AbilityValue : 0f);
     }
 
-    private void OnMove(Vector2 move)
+    private void OnMove()
     {
-        if (leftLeg.Equipment != null)
-            leftLeg.Equipment.Animate("walk_left");
-        if (rightLeg.Equipment != null)
-            rightLeg.Equipment.Animate("walk_right");
-        if (leftArm.Equipment != null)
-            leftArm.Equipment.Animate("walk_left");
-        if (rightArm.Equipment != null)
-            rightArm.Equipment.Animate("walk_right");
-        if (torso.Equipment != null)
-            torso.Equipment.Animate("walk");
+        if (controller.IsGrounded)
+        {
+            if (leftLeg.Equipment != null)
+                leftLeg.Equipment.Animate("walk_left");
+            if (rightLeg.Equipment != null)
+                rightLeg.Equipment.Animate("walk_right");
+            if (leftArm.Equipment != null)
+                leftArm.Equipment.Animate("walk_left");
+            if (rightArm.Equipment != null)
+                rightArm.Equipment.Animate("walk_right");
+            if (torso.Equipment != null)
+                torso.Equipment.Animate("walk");
+        }
+        else
+        {
+            OnStop();
+        }
     }
 
     public void OnStop()
@@ -152,30 +149,14 @@ public class CharacterInventory : MonoBehaviour
 
     public void Jump()
     {
-        if (controller.IsGrounded())
+        if (controller.IsGrounded)
         {
-            Debug.Log("Jump animation triggered");
             if (leftLeg.Equipment != null)
                 leftLeg.Equipment.Activate();
-            if (rightArm.Equipment != null)
-                rightArm.Equipment.Activate();
+            if (rightLeg.Equipment != null)
+                rightLeg.Equipment.Activate();
             if (torso.Equipment != null)
                 torso.Equipment.Activate();
         }
-        else
-        {
-            StopJump();
-        }
-    }
-
-    public void StopJump()
-    {
-
-            if (leftLeg.Equipment != null)
-                leftLeg.Equipment.DeActivate();
-            if (rightLeg.Equipment != null)
-                rightLeg.Equipment.DeActivate();
-            if (torso.Equipment != null)
-                torso.Equipment.DeActivate();
     }
 }

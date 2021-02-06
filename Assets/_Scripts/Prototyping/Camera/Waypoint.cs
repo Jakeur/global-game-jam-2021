@@ -20,7 +20,7 @@ public class Waypoint : MonoBehaviour
 
     private void Awake()
     {
-        if (transitions.Length > 0 && transitions[0].Key != KeyCode.None)
+        if (transitions.Length > 0 && transitions[0].Key != StageDirection.NONE)
         {
             triggerCamera = true;
         }
@@ -30,7 +30,7 @@ public class Waypoint : MonoBehaviour
         }
     }
 
-    public void HandleKey(KeyCode key)
+    public void HandleKey(StageDirection key)
     {
         int currentStage = CameraAnimationManager.Instance.CurrentStage;
 

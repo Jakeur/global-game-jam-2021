@@ -3,16 +3,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum StageDirection
+{
+    UP,
+    RIGHT,
+    DOWN,
+    LEFT,
+    NONE
+}
+
 [Serializable]
 public class StageTransition
 {
     [SerializeField] Waypoint endStage;
     public Waypoint EndPoint => endStage;
 
-    [SerializeField] KeyCode _key;
-    public KeyCode Key => _key;
+    [SerializeField] StageDirection _key;
+    public StageDirection Key => _key;
 
-    public KeyCode GetDirection(int currentStage)
+    public StageDirection GetDirection(int currentStage)
     {
         if (currentStage == endStage.StageId)
         {
@@ -22,20 +31,20 @@ public class StageTransition
         return _key;
     }
 
-    private KeyCode SwitchDirection()
+    private StageDirection SwitchDirection()
     {
         switch (_key)
         {
-            case KeyCode.UpArrow:
-                return KeyCode.DownArrow;
-            case KeyCode.DownArrow:
-                return KeyCode.UpArrow;
-            case KeyCode.LeftArrow:
-                return KeyCode.RightArrow;
-            case KeyCode.RightArrow:
-                return KeyCode.LeftArrow;
+            case StageDirection.UP:
+                return StageDirection.DOWN;
+            case StageDirection.DOWN:
+                return StageDirection.UP;
+            case StageDirection.LEFT:
+                return StageDirection.RIGHT;
+            case StageDirection.RIGHT:
+                return StageDirection.LEFT;
             default:
-                return KeyCode.None;
+                return StageDirection.NONE;
         }
     }
 }

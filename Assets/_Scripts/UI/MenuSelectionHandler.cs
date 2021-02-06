@@ -4,21 +4,26 @@ using UnityEngine.EventSystems;
 
 public class MenuSelectionHandler : MonoBehaviour
 {
-	[SerializeField] private InputReader _inputReader;
+	private GamepadActions controls;
 	[SerializeField] private GameObject _defaultSelection;
 	public GameObject currentSelection;
 	public GameObject mouseSelection;
 
-	private void OnEnable()
+    private void Awake()
+    {
+		controls = new GamepadActions();
+	}
+
+    private void OnEnable()
 	{
-		_inputReader.changeItemSlot += HandleMoveSelection;
+		controls.Menu.Enable();
 
 		StartCoroutine(SelectDefault());
 	}
 
 	private void OnDisable()
 	{
-		_inputReader.changeItemSlot -= HandleMoveSelection;
+		controls.Menu.Disable();
 	}
 
 	/// <summary>

@@ -8,7 +8,7 @@ public class BasicMovement : MonoBehaviour
     public float acceleration = 1;
 
     [SerializeField] DirectionSelectionMenu directionSelectionMenu;
-    [SerializeField] InputReader inputReader;
+    GamepadActions controls;
 
     private bool movementLocked = false;
 
@@ -21,6 +21,7 @@ public class BasicMovement : MonoBehaviour
     {
         rigidBody = GetComponent<Rigidbody>();
         inventory = GetComponent<CharacterInventory>();
+        controls = new GamepadActions();
     }
 
     // Start is called before the first frame update
@@ -46,12 +47,12 @@ public class BasicMovement : MonoBehaviour
 
     private void OnEnable()
     {
-        inputReader.moveEvent += OnMove;
+        controls.Player.Enable();
     }
 
     private void OnDisable()
     {
-        inputReader.moveEvent -= OnMove;
+        controls.Player.Disable();
     }
 
     void UpdateStagePosition(Waypoint stageEndpoint)

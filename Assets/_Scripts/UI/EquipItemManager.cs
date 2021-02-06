@@ -46,10 +46,10 @@ public class EquipItemManager : MonoBehaviour
     {
         title.text = tradeContent.Name;
         itemImage.sprite = tradeContent.Sprite;
-        if (CharacterInteraction.Instance != null)
-        {
-            equipButtonImage.sprite = equipSpriteResource[CharacterInteraction.Instance.GetControllerId()];
-            cancelButtonImage.sprite = cancelSpriteResource[CharacterInteraction.Instance.GetControllerId()];
-        }
+        //if (CharacterInteraction.Instance != null)
+        //{
+        //    equipButtonImage.sprite = equipSpriteResource[CharacterInteraction.Instance.GetControllerId()];
+        //    cancelButtonImage.sprite = cancelSpriteResource[CharacterInteraction.Instance.GetControllerId()];
+        //}
     }
 }

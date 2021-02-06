@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public class CharacterInteraction : MonoBehaviour
 {
     [SerializeField] string InteractableTag = "Interactable";
-    [SerializeField] InputReader inputReader;
+    GamepadActions controls;
 
     private bool interacting = false;
 
@@ -14,6 +14,11 @@ public class CharacterInteraction : MonoBehaviour
     private GameObject characterInteractingWith;
 
     public static CharacterInteraction Instance { get; private set; }
+
+    private void Awake()
+    {
+        controls = new GamepadActions();
+    }
 
     private void CreateInstance()
     {
@@ -27,39 +32,39 @@ public class CharacterInteraction : MonoBehaviour
         }
     }
 
-    public void ChangeGameStep(GameLoopStep newStep)
-    {
-        currentStep = newStep;
+    //public void ChangeGameStep(GameLoopStep newStep)
+    //{
+    //    currentStep = newStep;
 
-        switch (currentStep)
-        {
-            case GameLoopStep.DIALOGUE:
-                inputReader.EnableDialogueInput();
-                break;
-            case GameLoopStep.EXPLORE:
-                inputReader.EnablePlayerInput();
-                break;
-            case GameLoopStep.INVENTORY:
-                inputReader.EnableInventoryInput();
-                break;
-            case GameLoopStep.MENU:
-                inputReader.EnableMenuInput();
-                break;
-            case GameLoopStep.TRADE:
-                // When a player trade, save checkpoint
-                CheckpointManager.Instance.UpdateCheckpoint(this.gameObject, Camera.main.transform, CameraAnimationManager.Instance.CurrentStage);
+    //    switch (currentStep)
+    //    {
+    //        case GameLoopStep.DIALOGUE:
+    //            inputReader.EnableDialogueInput();
+    //            break;
+    //        case GameLoopStep.EXPLORE:
+    //            inputReader.EnablePlayerInput();
+    //            break;
+    //        case GameLoopStep.INVENTORY:
+    //            inputReader.EnableInventoryInput();
+    //            break;
+    //        case GameLoopStep.MENU:
+    //            inputReader.EnableMenuInput();
+    //            break;
+    //        case GameLoopStep.TRADE:
+    //            // When a player trade, save checkpoint
+    //            CheckpointManager.Instance.UpdateCheckpoint(this.gameObject, Camera.main.transform, CameraAnimationManager.Instance.CurrentStage);
 
-                inputReader.EnableTradeInput();
-                break;
-        }
-    }
+    //            inputReader.EnableTradeInput();
+    //            break;
+    //    }
+    //}
 
-    public int GetControllerId()
-    {
-        return ((int)inputReader.controller);
-    }
+    //public int GetControllerId()
+    //{
+    //    return ((int)inputReader.controller);
+    //}
 
-    private void Awake()
+    private void Start()
     {
         // Singleton creation
         CreateInstance();
